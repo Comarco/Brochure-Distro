@@ -18,7 +18,7 @@ function kt_brochure_layouts_boxes_ctools_plugin_api() {
     return array("version" => 1);
   }
   elseif ($module == "stylizer" && $api == "") {
-    return array("version" => );
+    return array("version" => '');
   }
 }
 
