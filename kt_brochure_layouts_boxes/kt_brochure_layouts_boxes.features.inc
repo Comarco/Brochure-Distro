@@ -17,6 +17,9 @@ function kt_brochure_layouts_boxes_ctools_plugin_api() {
   elseif ($module == "strongarm" && $api == "strongarm") {
     return array("version" => 1);
   }
+  elseif ($module == "stylizer" && $api == "") {
+    return array("version" => '');
+  }
 }
 
 /**
@@ -81,6 +84,49 @@ function kt_brochure_layouts_boxes_imagecache_default_presets() {
             'alpha' => '100',
             'path' => 'sites/all/modules/features/kt_brochure_layouts_boxes/images/cadreflou210x130.png',
             'dimensions' => 'original',
+          ),
+        ),
+      ),
+    ),
+    'kt_brochure_width_of_the_site' => array(
+      'presetname' => 'kt_brochure_width_of_the_site',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale',
+          'data' => array(
+            'width' => '990',
+            'height' => '',
+            'upscale' => 1,
+          ),
+        ),
+        '1' => array(
+          'weight' => '0',
+          'module' => 'imagecache_canvasactions',
+          'action' => 'canvasactions_roundedcorners',
+          'data' => array(
+            'radius' => '32',
+            'independent_corners_set' => array(
+              'independent_corners' => 0,
+              'radii' => array(
+                'tl' => '',
+                'tr' => '',
+                'bl' => '',
+                'br' => '',
+              ),
+            ),
+          ),
+        ),
+        '2' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_crop',
+          'data' => array(
+            'width' => '990',
+            'height' => '200',
+            'xoffset' => 'center',
+            'yoffset' => 'center',
           ),
         ),
       ),
