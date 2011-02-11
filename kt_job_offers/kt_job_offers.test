@@ -1,0 +1,87 @@
+<?php
+// $Id$
+
+  /*
+    cette classe correspond à une famille de cas d'utilisation. 
+    Des modules complexes auront plusieurs familles de cas
+    d'utilisation. À l'intérieur d'une même famille, tous les cas 
+    d'utilisation auront le même set-up.
+    
+    this class corresponds to a family of use cases (tests). 
+    Complex modules will have several of these. Inside a same 
+    family of tests, all tests will have the same setup.
+  */
+
+class Kt_job_offersTestCase extends DrupalWebTestCase {
+
+    /*
+      Infos pour la famille de cas d'utilisation.
+      Info for this family of usecases (tests).
+    */
+  public static function getInfo() {
+    return array(
+      'name' => t('Functional testing for kt_job_offers'),
+      'description' => t('Test the functionality of kt_job_offers'),
+      'group' => 'kt_job_offers',
+    );
+  }
+
+    /*
+kt_job_offer 
+      Set up commun à tous les cas à l'intérieur d'une famille
+      Common setup for all usecases within a family.
+    */
+  public function setUp() {
+    parent::setUp();
+    $admin = $this->drupalCreateUser(array('administer site configuration'));
+    $this->drupalLogin($admin);
+
+  }
+
+    /*
+      Cas d'utilisation (test)-- on le reconnaît car il commence par 'test'.
+      Pour chaque cas d'utilisation, Simpletest créera une toute nouvelle 
+      installation Drupal, appliquera le SetUp commun de la famille et passera
+      par le code dans la méthode "test".
+
+      Use case (test) -- recognizable as such because it starts with 'test'.
+      For every test, Simpletest will create a completely new Drupal
+      installation, will apply the common setUp and go through this code in 
+      the test method.
+    */
+  public function testMainTest() {
+  
+      // activer le feature (la fonction permet d'activer les dépendances) 
+    
+    $this->_enableModules('kt_job_offers');
+    
+      // s'assurer que le menu apparait sur la page
+    
+    $this->assertRaw('<a href="/job-offers">Job Offers</a>','On s\'assure que le menu apparait pour l\'utilisateur logué');
+    $this->drupalLogout();
+
+    
+
+    $this->assertRaw('<a href="/job-offers">Job Offers</a>','On s\'assure que le menu apparait pour l\'utilisateur Anonyme');
+    }
+
+/**
+   * Helper function to enable module(s).
+   */
+  public function _enableModules($modules) {
+    if(!is_array($modules)) {
+      $modules = array($modules);
+    }
+
+    foreach($modules as $module) {
+      $this->drupalPost('admin/build/modules/list', array('status[' . $module . ']' => true), t('Save configuration'));
+      if (strpos($this->drupalGetContent(), t('Some required modules must be enabled'))) {
+        $this->drupalPost(NULL /* we're already at the right path, the Confirm page*/, array(), t('Continue'));
+      }
+      $this->drupalGet('admin/build/modules');
+      $raw = 'value="' . $module . '"  checked="checked"';
+      $this->assertRaw($raw, t('Module @m has been activated because the raw html @r was found on the page.', array('@m' => $module, '@r' => $raw)));
+    }
+  }
+
+}

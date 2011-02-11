@@ -1,0 +1,3 @@
+<?php
+
+include_once('kt_links.features.inc');

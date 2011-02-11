@@ -1,0 +1,145 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Test functionality of kt_i18n.
+ */
+
+class Kt_i18nTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => t('kt_i18n functionality'),
+      'description' => t('Test the functionality of kt_i18n'),
+      'group' => 'kt_i18n',
+    );
+  }
+
+  public function setUp() {
+      // simpletest doesn't automatically set up dependencies -- 
+      // see http://drupal.org/node/399642
+    parent::setUp('ctools', 'context', 'context_ui', 'ktodo', 'kt_i18n', 'locale', 'kt_basic', 'i18n');
+
+    $perms = array('view ktodo items', 'administer languages');
+    $this->verbose(t('Se connecter avec un utilisateur ayant les droits @a', array('@a' => implode(', ', $perms))));
+    $admin = $this->drupalCreateUser($perms);
+    $this->drupalLogin($admin);
+
+    $this->verbose(t('at this point kt_i18n is active'));
+  }
+
+  /**
+   * Functional test for being told to set up a language.
+   */
+  public function testMainTest() {
+
+    $this->assertRaw(t('The multilingual feature is enabled but only one language is active. Please visit the !l and make sure more than one language is active.', array('!l' => l(t('languages page'), 'admin/settings/language'))), t('Right now there is only one active language. Make sure the system asks us to enable other languages.'));
+    
+    $this->drupalPost('admin/settings/language/add', array('langcode' => 'fr'), t('Add language'));
+
+    $this->assertNoRaw(t('The multilingual feature is enabled but only one language is active. Please visit the !l and make sure more than one language is active.', array('!l' => l(t('languages page'), 'admin/settings/language'))),  t('We\'ve added French, so the user should no longer be asked to add a language.'));
+
+    $this->assertRaw('li class="fr',  t('Our language switcher now exists.'));
+
+    $this->assert(strpos($this->drupalGetContent(), 'block-locale-0') < strpos($this->drupalGetContent(), 'block-user-1'), t('Make sure the language switcher is above the navigation block.'));
+
+    $this->drupalLogout();
+
+    $this->drupalGet('<front>');
+
+    $this->assert(strpos($this->drupalGetContent(), 'block-locale-0') < strpos($this->drupalGetContent(), 'block-user-0'), t('Make sure the language switcher is above the login block when we are logged out.'));
+  }
+}
+
+class Kt_i18nExtendTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => t('kt_i18n integration with other Features'),
+      'description' => t('Make sure other Features can, but don\'t have to, take advantage of kt_i18n'),
+      'group' => 'kt_i18n',
+    );
+  }
+
+  public function setUp() {
+      // not enabling anything here except locale because we need "administer languages" permission. We want to test whether the order of enabling Features changes whether it works or not. Note that views must be enabled      here rather than later to avoid the error Undefined property: views_display::$display_options in the test suite.
+    parent::setUp('views', 'locale');
+
+    $perms = array('administer site configuration', 'administer languages', 'administer nodes');
+    $this->verbose(t('Se connecter avec un utilisateur ayant les droits @a', array('@a' => implode(', ', $perms))));
+    $admin = $this->drupalCreateUser($perms);
+    $this->drupalLogin($admin);
+  }
+
+  /**
+   * Functional test for enabling an integrated Feature before enabling kt_i18n.
+   */
+  public function testEnableFeatureBeforeTest() {
+    $this->_enableModules('kt_i18n_test');
+    $this->_enableModules('kt_i18n');
+
+    $this->_addLanguage();
+
+    $this->_testWorkingMultilingualContentTypes('kt_i18n enabled last');
+  }
+  
+  /**
+   * Helper function to enable module(s).
+   */
+  public function _enableModules($modules) {
+    if(!is_array($modules)) {
+      $modules = array($modules);
+    }
+
+    foreach($modules as $module) {
+      $this->drupalPost('admin/build/modules/list', array('status[' . $module . ']' => true), t('Save configuration'));
+      if (strpos($this->drupalGetContent(), t('Some required modules must be enabled'))) {
+        $this->drupalPost(NULL /* we're already at the right path, the Confirm page*/, array(), t('Continue'));
+      }
+      $this->drupalGet('admin/build/modules');
+      $raw = 'value="' . $module . '"  checked="checked"';
+      $this->assertRaw($raw, t('Module @m has been activated because the raw html @r was found on the page.', array('@m' => $module, '@r' => $raw)));
+    }
+  }
+
+  /**
+   * Functional test for enabling an integrated Feature after enabling kt_i18n.
+   */
+  public function testEnableFeatureAfterTest() {
+    $this->_enableModules('kt_i18n');
+    $this->_enableModules('kt_i18n_test');
+
+    $this->_addLanguage();
+
+    $this->_testWorkingMultilingualContentTypes(t('kt_i18n enabled first'));
+  }
+  
+  /**
+   * Helper funciton to add a language
+   */
+  public function _addLanguage() {
+    $this->drupalPost('admin/settings/language/add', array('langcode' => 'fr'), t('Add language'));
+
+    $this->verbose(t('at this point kt_i18n should be active and two languages enabled.'));
+  }
+  
+  /**
+   * Helper funciton to test if multilingual content types work as expected.
+   */
+  function _testWorkingMultilingualContentTypes($message) {
+    $this->drupalGet('node/add/kt-i18n-testuntranslatable');
+    $this->assertNoRaw('<select name="language" class="form-select" id="edit-language" >', t('Content type that shouldn\'t be localizable isn\'t when @c', array('@c' => $message)));
+    
+    $this->drupalGet('node/add/kt-i18n-testtranslatable');
+    $this->assertRaw('<select name="language" class="form-select" id="edit-language" >', t('Content type that should be localizable is when @c', array('@c' => $message)));
+
+    $this->assertRaw('kt_i18n_test/path/in/english" title="">Menu Item In English</a>', t('Menu item and path appear in English by default; we are assuming an English Drupal installation.'));  
+    
+    $this->clickLink('Français');
+    $this->assertRaw('fr/kt_i18n_test/chemin/en/francais" title="">', t('After clicking the French language link, path appears in French.'));    
+ 
+    // todo; see https://redmine.koumbit.net/issues/1943. $this->assertRaw('Item de menu en français</a>" title="">', t('After clicking the French language link, path appears in French.'));    
+ 
+    $this->clickLink('English');
+    $this->assertRaw('kt_i18n_test/path/in/english" title="">Menu Item In English</a>', t('Clicking English returns us to English, and to the english path and menu item name.'));    
+  }
+}

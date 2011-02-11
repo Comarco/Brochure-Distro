@@ -1,0 +1,3 @@
+<?php
+
+include_once('kt_bookmarks.features.inc');

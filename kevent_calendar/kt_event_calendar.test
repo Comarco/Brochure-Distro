@@ -1,0 +1,202 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Test functionality of kt_event_calendar.
+ */
+
+class Kt_event_calendarTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => t('kt_event_calendar functionality'),
+      'description' => t('Test the functionality of kt_event_calendar, and if kt_i18n is available, that it translates correctly.'),
+      'group' => 'kt_event_calendar',
+    );
+  }
+
+  /**
+   * Helper function to check if a module is available.
+   */
+  public function _moduleAvail($module) {
+    $this->drupalGet('admin/build/modules/list');
+    
+    return (strpos($this->content, 'value="' . $module . '"   disabled="disabled"') === FALSE);
+  }
+  /**
+   * Helper function to enable module(s).
+   */
+  public function _enableModules($modules) {
+    if(!is_array($modules)) {
+      $modules = array($modules);
+    }
+
+    foreach($modules as $module) {
+      $this->drupalPost('admin/build/modules/list', array('status[' . $module . ']' => true), t('Save configuration'));
+      if (strpos($this->drupalGetContent(), t('Some required modules must be enabled'))) {
+        $this->drupalPost(NULL /* we're already at the right path, the Confirm page*/, array(), t('Continue'));
+      }
+      $this->drupalGet('admin/build/modules');
+      $raw = 'value="' . $module . '"  checked="checked"';
+      $this->assertRaw($raw, t('Module @m has been activated because the raw html @r was found on the page.', array('@m' => $module, '@r' => $raw)));
+    }
+  }
+
+  public function setUp() {
+      // simpletest doesn't automatically set up dependencies -- 
+      // see http://drupal.org/node/399642
+    parent::setUp();
+
+    $perms = array('administer site configuration', 'administer permissions', 'administer blocks');
+    $this->verbose(t('Connecting with user having permission(s) @a', array('@a' => implode(', ', $perms))));
+    $admin = $this->drupalCreateUser($perms);
+    $this->drupalLogin($admin);
+    $this->_enableModules(array('kt_event_calendar', 'views_ui'));
+    $this->drupalPost('admin/user/permissions', array('3[create kt_event_calandar content]' => true), t('Save permissions'));
+    $this->drupalPost('admin/user/permissions', array('3[administer views]' => true), t('Save permissions'));
+    $this->drupalPost('admin/user/permissions', array('3[access all views]' => true), t('Save permissions'));
+
+    $this->verbose(t('at this point kt_event_calendar is active.'));
+
+    $this->verbose(t('about to create three events, one on the 15th of this month, one coming up on the 15th of next month and one on the 15th of the prior month.'));
+
+    $last_month_timestamp = strtotime('1 ' . date('F') . ' ' . date('Y')) - 5*24*60*60;
+    $this_month_timestamp = strtotime('15 ' . date('F') . ' ' . date('Y'));
+    $next_month_timestamp = strtotime('15 ' . date('F') . ' ' . date('Y')) + 30*24*60*60;
+
+    $this->drupalPost('node/add/kt-event-calandar', array(
+      'title' =>'earlist past date',
+      'field_kt_event_calendar_date[0][value][year]' => date('Y', $last_month_timestamp),
+      'field_kt_event_calendar_date[0][value][month]' => date('n', 
+      $last_month_timestamp),
+      'field_kt_event_calendar_date[0][value][day]' => '15',
+      'field_kt_event_calendar_date[0][value][hour]' => '0',
+      'field_kt_event_calendar_date[0][value][minute]' => '00',
+    ), t('Save'));
+    
+    $this->drupalPost('node/add/kt-event-calandar', array(
+      'title' => 'later past date',
+      'field_kt_event_calendar_date[0][value][year]' => date('Y', $last_month_timestamp),
+      'field_kt_event_calendar_date[0][value][month]' => date('n', 
+      $last_month_timestamp),
+      'field_kt_event_calendar_date[0][value][day]' => '16',
+      'field_kt_event_calendar_date[0][value][hour]' => '0',
+      'field_kt_event_calendar_date[0][value][minute]' => '00',
+    ), t('Save'));
+    
+    $this->drupalPost('node/add/kt-event-calandar', array(
+      'title' => 'this month',
+      'field_kt_event_calendar_date[0][value][year]' => date('Y', $this_month_timestamp),
+      'field_kt_event_calendar_date[0][value][month]' => date('n', 
+      $this_month_timestamp),
+      'field_kt_event_calendar_date[0][value][day]' => '15',
+      'field_kt_event_calendar_date[0][value][hour]' => '0',
+      'field_kt_event_calendar_date[0][value][minute]' => '00',
+    ), t('Save'));
+
+    $this->drupalPost('node/add/kt-event-calandar', array(
+      'title' => 'earlier future date',
+      'field_kt_event_calendar_date[0][value][year]' => date('Y', $next_month_timestamp),
+      'field_kt_event_calendar_date[0][value][month]' => date('n', 
+      $next_month_timestamp),
+      'field_kt_event_calendar_date[0][value][day]' => '15',
+      'field_kt_event_calendar_date[0][value][hour]' => '0',
+      'field_kt_event_calendar_date[0][value][minute]' => '00',
+    ), t('Save'));
+    $this->drupalPost('node/add/kt-event-calandar', array(
+      'title' => 'latest future date',
+      'field_kt_event_calendar_date[0][value][year]' => date('Y', $next_month_timestamp),
+      'field_kt_event_calendar_date[0][value][month]' => date('n', 
+      $next_month_timestamp),
+      'field_kt_event_calendar_date[0][value][day]' => '16',
+      'field_kt_event_calendar_date[0][value][hour]' => '0',
+      'field_kt_event_calendar_date[0][value][minute]' => '00',
+    ), t('Save'));
+    
+    $this->verbose(t('Making the calendar block visible in the left region.'));
+
+    $this->drupalPost('admin/build/block', array('views_547c8713c1ae1324a94afbbaa64d9b55[region]' => 'left'), t('Save blocks'));
+  }
+
+  /**
+   * Functional test for being told to set up a language.
+   */
+  public function testMainTest() {
+    $this->drupalGet('node');
+
+    $this->assertRaw(' today ', t('The string " today " is present in the html, which indicates that the calendar appears on the page as expected.'));
+
+    $this->clickLink('15');
+    
+    $this->verbose($this->getUrl());
+
+    $this->drupalGet('node');
+    
+    $this->clickLink(' »');
+    $this->clickLink('15');
+    $this->verbose(arg(1));
+    
+    $this->drupalGet('');
+    
+    $this->clickLink('« ');
+    $this->clickLink('15');
+    $this->verbose(arg(1));
+
+    $this->drupalGet('events');
+    $this->assertNoRaw('node/1', t('The earliest passed event should be visible here.'));
+    $this->assertNoRaw('node/2', t('A later passed event should be visible here.'));
+    $this->assertRaw('node/4', t('A earlier future event should not be visible here.'));
+    $this->assertRaw('node/5', t('The latest future event should not be visible here.'));
+    $this->assert(strpos($this->content, 'node/4') < strpos($this->content, 'node/5'), t('Upcoming events should be in chronological order.'));
+    
+    $this->drupalGet('events/passed');
+    $this->assertRaw('node/1', t('The earliest passed event should be visible here.'));
+    $this->assertRaw('node/2', t('A later passed event should be visible here.'));
+    $this->assertNoRaw('node/4', t('A earlier future event should not be visible here.'));
+    $this->assertNoRaw('node/5', t('The latest future event should not be visible here.'));
+    $this->assert(strpos($this->content, 'node/1') > strpos($this->content, 'node/2'), t('Passed events should be in reverse chronological order.'));
+
+    $i18n = $this->_moduleAvail('kt_i18n');
+    $this->assert($i18n, t('Interaction with kt_i18n cannot be tested because either it_i18n or its dependencies are not present in the filesystem.'));
+    
+    if($i18n) {
+      $this->_enableModules('kt_i18n');
+
+      $this->drupalPost('admin/user/permissions', array('3[administer languages]' => true), t('Save permissions'));
+      $this->drupalPost('admin/user/permissions', array('3[translate content]' => true), t('Save permissions'));
+      $this->drupalPost('admin/user/permissions', array('3[edit any kt_event_calandar content]' => true), t('Save permissions'));
+      $this->drupalPost('admin/settings/language/i18n', 
+      array('i18n_selection_mode' => 'mixed'), t('Save configuration'));
+      $this->drupalPost('admin/settings/language/add', array('langcode' => 'fr'), t('Add language'));
+
+      $this->verbose(t('Make the five nodes we just created be in English.'));
+      $this->drupalPost('node/1/edit', array('language' => 'en'), t('Save'));
+      $this->drupalPost('node/2/edit', array('language' => 'en'), t('Save'));
+      $this->drupalPost('node/3/edit', array('language' => 'en'), t('Save'));
+      $this->drupalPost('node/4/edit', array('language' => 'en'), t('Save'));
+      $this->drupalPost('node/5/edit', array('language' => 'en'), t('Save'));
+
+      $this->verbose(t('Will translate nodes 1 and 5 to French.'));
+      $this->drupalGet('node/1/translate');
+      $this->clickLink('add translation');
+      $this->drupalPost(NULL, array('title' => 'earliest past date (FR)'), 'Save');
+      $this->drupalGet('node/5/translate');
+      $this->clickLink('add translation');
+      $this->drupalPost(NULL, array('title' => 'latest future date (FR)'), 'Save');
+
+      $this->drupalGet('events');
+      $this->assertRaw('fr/evenements" class="language-link">Français</a>', 'Path translates correctly for upcoming events.');
+      $this->clickLink('Français');
+      $this->assertRaw('node/4', t('A earlier future event should not be visible here because it is not translated.'));
+      $this->assertNoRaw('node/5', t('The latest future event should not be visible here because it is translated. *Note* This test will fail if the patch http://drupal.org/node/887116 has not been applied.'));
+      $this->assertRaw('node/7', t('The translated latest future event should not be visible here.'));
+
+      $this->drupalGet('events/passed');
+      $this->assertRaw('fr/evenements/passes" class="language-link">Français</a>', 'Path translates correctly for passed events.');
+      $this->clickLink('Français');
+      $this->assertNoRaw('node/1', t('The earliest passed event should be visible here because it is translated.'));
+      $this->assertRaw('node/6', t('The translated earliest passed event should be visible here.'));
+      $this->assertRaw('node/2', t('A later passed event should be visible here because it is not translated.'));
+    }
+  }
+}

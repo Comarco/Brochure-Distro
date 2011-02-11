@@ -1,0 +1,25 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Perform some install tasks.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function kt_i18n_install() {
+ 
+    // some variables can't be initialized via strongarm, 
+    // see also http://drupal.org/node/661442. I define them here.
+
+    // even though locale is a dependency, it isn't active at this stage. We
+    // must force activate it.
+  drupal_install_modules(array('locale'));
+
+      // if the language negociation is not set, set it to path. 
+      // if it's something else, we won't touch it, because we don't 
+      // want to override something the user has already done.
+  variable_set('language_negotiation', variable_get('language_negociation', LANGUAGE_NEGOTIATION_PATH_DEFAULT));
+}

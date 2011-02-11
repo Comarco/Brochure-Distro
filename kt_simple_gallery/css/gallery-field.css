@@ -1,0 +1,20 @@
+div.field-field-kt-img-gal div.field-item {
+  display:inline;
+}
+div.field-field-kt-img-gal div.field-item img {
+  vertical-align:middle;
+}
+.field-field-kt-img-gal dl,
+.field-field-kt-img-gal dt {
+}
+.field-field-kt-img-gal dd {
+  width:200px; /* the width of the images */
+}
+.field-field-kt-img-gal dl {
+  margin:10px 10px 10px 0;
+}
+dl.kt-gal-field-item,
+.views-field-field-kt-teaser-img-fid img {
+  display:inline-block;
+  vertical-align:top;
+}

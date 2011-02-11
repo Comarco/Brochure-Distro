@@ -1,0 +1,4 @@
+; $Id$
+name = ktodo
+description = lets modules define tasks to be done
+core = 6.x

@@ -1,0 +1,18 @@
+<?php
+
+include_once('kt_stories.features.inc');
+
+function kt_stories_init(){
+  drupal_add_css(drupal_get_path('module', 'kt_stories') .'/css/kt_stories.css');
+}
+
+function kt_stories_theme_registry_alter(&$theme_registry) {
+  if (!empty($theme_registry['node'])) {
+    $theme_registry['node']['theme paths'][] = drupal_get_path('module', 'kt_stories') .'/templates' ;
+  }
+  if (!empty($theme_registry['content_field'])) {
+    $theme_registry['content_field']['theme paths'][] = drupal_get_path('module', 'kt_stories') .'/templates' ;
+  }
+
+}
+

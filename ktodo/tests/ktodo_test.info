@@ -1,0 +1,5 @@
+; $Id$
+name = ktodo_test
+description = exists solely for the purpose of testing ktodo
+package = Testing
+core = 6.x

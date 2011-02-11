@@ -1,0 +1,51 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Mock module implement hook_ktodo(): this module will set hook_ktodo to 'Visit
+ * page ktodo_test' until said page is actually visited.
+ */
+
+/**
+ * Implements hook_ktodo().
+ */
+function ktodo_test_ktodo() {
+  $r = array();
+
+  if (variable_get('ktodo_test', '') != 'page visited') {
+    $r[] = array(
+        // note: title should not be localized.
+      'title' => 'Visit page !l',
+      'args' => array(
+        '!l' => l(t('ktodo_test'), 'ktodo_test'),
+      ),
+    );
+  }
+
+  return $r;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function ktodo_test_menu() {
+  $items['ktodo_test'] = array(
+    'title' => 'ktodo_test',
+    'page callback' => 'ktodo_test_page',
+    'access arguments' => array('view ktodo items'),
+  );
+}
+
+/**
+ * function ktodo_test_page()
+ * sets the varialbe ktodo_test to 'page visited'
+ */
+function ktodo_test_page() {
+    // set the variable ktodo_test page visited. This is our mock 'todo'
+    // item. Once this is done the todo item is considered done and disappears.
+  variable_set('ktodo_test', 'page visited');
+
+    // must return something.
+  return t('Thanks for visiting ktodo_test');
+}

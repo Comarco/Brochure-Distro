@@ -1,0 +1,14 @@
+<?php
+
+function kt_event_calendar_install() {
+    // even though path is a dependency, it isn't active at this stage. We
+    // must force activate it.
+  drupal_install_modules(array('path'));
+
+  if (drupal_get_path_alias('events', 'fr') == 'events') {
+    path_set_alias('events', 'evenements', NULL, 'fr');
+  }
+  if (drupal_get_path_alias('events/passed', 'fr') == 'events/passed') {
+    path_set_alias('events/passed', 'evenements/passes', NULL, 'fr');
+  }
+}

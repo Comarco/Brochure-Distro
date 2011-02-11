@@ -1,0 +1,3 @@
+<?php
+
+include_once('kt_job_offers.features.inc');

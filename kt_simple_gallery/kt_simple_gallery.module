@@ -1,0 +1,14 @@
+<?php
+
+include_once('kt_simple_gallery.features.inc');
+
+function kt_simple_gallery_init(){
+  drupal_add_css(drupal_get_path('module', 'kt_simple_gallery') .'/css/gallery-field.css');
+}
+
+function kt_simple_gallery_theme_registry_alter(&$theme_registry) {
+  if (!empty($theme_registry['content_field'])) {
+    $theme_registry['content_field']['theme paths'][] = drupal_get_path('module', 'kt_simple_gallery') .'/templates' ;
+  }
+}
+

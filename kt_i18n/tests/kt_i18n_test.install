@@ -1,0 +1,11 @@
+<?php
+
+function kt_i18n_test_install() {
+    // even though path is a dependency, it isn't active at this stage. We
+    // must force activate it.
+  drupal_install_modules(array('path'));
+
+  if (drupal_get_path_alias('kt_i18n_test/path/in/english', 'fr') == 'kt_i18n_test/path/in/english') {
+    path_set_alias('kt_i18n_test/path/in/english', 'kt_i18n_test/chemin/en/francais', NULL, 'fr');
+  }
+}

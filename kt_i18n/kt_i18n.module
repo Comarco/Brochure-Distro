@@ -1,0 +1,58 @@
+<?php // $Id$
+
+/**
+ * @file
+ * Implement functions necessary for a multilingual site.
+ */
+
+include_once('kt_i18n.features.inc');
+
+/**
+ * Implements hook_ktodo()
+ * see module ktodo.
+ */
+function kt_i18n_ktodo() {
+  $r = array();
+
+  if (count(language_list()) <= 1 && user_access('administer languages')) {
+    $r[] = array(
+        // note: title should not be localized.
+      'title' => 'The multilingual feature is enabled but only one language is active. Please visit the !l and make sure more than one language is active.',
+      'args' => array(
+        '!l' => l(t('languages page'), 'admin/settings/language'),
+      ),
+    );
+  }
+  if (!in_array(variable_get('language_negotiation', LANGUAGE_NEGOTIATION_NONE), array(LANGUAGE_NEGOTIATION_PATH, LANGUAGE_NEGOTIATION_PATH_DEFAULT))) {
+    $r[] = array(
+        // note: title should not be localized.
+      'title' => 'For the multilingual feature to work correctly, please visit the !l and make sure !ln is set to !ppo or !pplf.',
+      'args' => array(
+        '!l' => l(t('language configuration page'), 'admin/settings/language/configure'),
+        '!ln' => t('language negociation'),
+        '!ppo' => t('Path prefix only'),
+        '!pplf' => t('Path prefix with language fallback'),
+      ),
+    );
+  }
+  if (module_exists('boost') && variable_get('language_negotiation', LANGUAGE_NEGOTIATION_NONE) == LANGUAGE_NEGOTIATION_PATH) {
+    $r[] = array(
+        // note: title should not be localized.
+      'title' => '!pplf mode is not compatible with the boost module you have installed. Please disable boost on the !mp or set !ln to !ppo.',
+      'args' => array(
+        '!pplf' => t('Path prefix with language fallback'),
+        '!mp' => l(t('module page'), 'admin/build/modules/list'),
+        '!ln' => l(t('language negociation'), 'admin/settings/language/configure'),
+        '!ppo' => t('Path prefix only'),
+      ),
+    );
+  }
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('The multilingual feature is enabled but only one language is active. Please visit the !l and make sure more than one language is active.', array('!l' => l(t('languages page'), 'admin/settings/language')));
+  t('For the multilingual feature to work correctly, please visit the !l and make sure !ln is set to !ppo or !pplf.', array('!l' => l(t('language configuration page'), 'admin/settings/language/configure'), '!ln' => t('language negociation'), '!ppo' => t('Path prefix only'), '!pplf' => t('Path prefix with language fallback')));
+  t('!pplf mode is not compatible with the boost module you have installed. Please disable boost on the !mp or set !ln to !ppo.', array('!pplf' => t('Path prefix with language fallback'), '!mp' => l(t('module page'), 'admin/build/modules/list'), '!ln' => l(t('language negociation'), 'admin/settings/language/configure'), '!ppo' => t('Path prefix only')));
+
+  return $r;
+}

@@ -1,0 +1,14 @@
+core = "6.x"
+dependencies[] = "context"
+dependencies[] = "admin_menu"
+dependencies[] = "ktodo"
+  ; putting ktodo as a dependency because features are meant to 
+  ; work out of the box. some, like kt_i18n won't because languages need
+  ; to be added. ktodo module allows us to tell the user that 
+  ; a language needs to be enabled, and perform other
+  ; verifications.
+description = "Des fonctionalités de base Koumbit"
+features[context][] = "kt_basic_blocks"
+features[ctools][] = "context:context:3"
+name = "kt_basic"
+package = "Features"

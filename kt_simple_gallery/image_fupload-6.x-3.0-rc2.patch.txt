@@ -1,0 +1,44 @@
+diff --git a/image_fupload.install b/image_fupload.install
+index a70a377..1f12c3d 100644
+--- image_fupload/image_fupload.install
++++ image_fupload/image_fupload.install
+@@ -49,8 +49,10 @@ function image_fupload_requirements($phase) {
+   
+   if ($phase == 'runtime') {
+     // Make sure that swfUpload Files which aren't bundled with this module, are located in swfupload directory
+-    $path = drupal_get_path('module', 'image_fupload') .'/swfupload/';
+-    if (!file_exists($path .'swfupload.js') || !file_exists($path .'swfupload.queue.js') || !file_exists($path .'swfupload.swf')) {
++    $path_js = drupal_get_path('module', 'image_fupload') .'swfupload/';
++    $path_queue = drupal_get_path('module', 'image_fupload') .'swfupload/plugins/';
++    $path_swf = drupal_get_path('module', 'image_fupload') .'swfupload/Flash/';
++    if (!file_exists($path_js .'swfupload.js') || !file_exists($path_queue .'swfupload.queue.js') || !file_exists($path_swf .'swfupload.swf')) {
+       // One or more needed files are missing; give an error
+        $requirements['image_fupload'] = array(
+          'title' => t('Image FUpload'),
+@@ -197,4 +199,4 @@ function image_fupload_update_6304() {
+   // because some theme related things changed
+   
+   return $ret;
+-}
+\ No newline at end of file
++}
+diff --git a/swfupload-settings.tpl.php b/swfupload-settings.tpl.php
+index c4e8a2e..e529f1d 100644
+--- image_fupload/swfupload-settings.tpl.php
++++ image_fupload/swfupload-settings.tpl.php
+@@ -10,7 +10,7 @@
+ 
+ 		window.onload = function() {
+ 			var settings = {
+-				flash_url : "<?php print $modulepath; ?>/swfupload/swfupload.swf",
++				flash_url : "<?php print $modulepath; ?>/swfupload/Flash/swfupload.swf",
+ 				upload_url: "<?php print $uploadpath; ?>",	// Relative to the SWF file
+         post_params: {"PHPSESSID" : "<?php print $sessionid; ?>" , "nodetype" : "<?php print $nodetype; ?>", "fieldname" : "<?php print $fieldname; ?>"},
+         file_post_name: "Filedata",
+@@ -120,4 +120,4 @@
+              if (redirect_url_main == "" && numFilesUploaded > 0)
+                fupload_redirect();
+              
+-         }
+\ No newline at end of file
++         }

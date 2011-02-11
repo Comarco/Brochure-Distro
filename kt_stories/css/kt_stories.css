@@ -1,0 +1,27 @@
+.view-kt-stories-list .field-field-kt-teaser-img {
+ float:left;
+ margin-bottom:4px;
+ margin-right:15px;
+}
+
+div.field-field-kt-stories-img-gal div.field-item {
+  display:inline;
+}
+div.field-field-kt-stories-img-gal div.field-item img {
+  vertical-align:middle;
+}
+.field-field-kt-stories-img-gal dl,
+.field-field-kt-stories-img-gal dt {
+}
+.field-field-kt-stories-img-gal dd {
+  margin-left:0;
+  width:200px; /* the width of the images */
+}
+.field-field-kt-stories-img-gal dl {
+  margin:10px 10px 10px 0;
+}
+dl.kt-gal-field-item,
+.views-field-field-kt-teaser-img-fid img {
+  display:inline-block;
+  vertical-align:top;
+}

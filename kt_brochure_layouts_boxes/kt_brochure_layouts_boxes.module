@@ -1,0 +1,3 @@
+<?php
+
+include_once('kt_brochure_layouts_boxes.features.inc');

@@ -1,0 +1,43 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Test functionality of ktodo..
+ */
+
+class KtodoTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => t('ktodo functionality'),
+      'description' => t('Test the functionality of ktodo'),
+      'group' => 'ktodo',
+    );
+  }
+
+  public function setUp() {
+    parent::setUp('ktodo', 'ktodo_test');
+    $admin = $this->drupalCreateUser(array('view ktodo items', 'administer blocks'));
+    $this->drupalLogin($admin);
+    $this->drupalPost('admin/build/block', array('ktodo_0[region]' => 'left'), t('Save blocks'));
+
+      // at this point the todo block is active and we should be seeing it.
+  }
+
+  /**
+   * Functional test for viewing a todo list, doing the item on the list,
+   * and making sure the item is no longer on the list.
+   */
+  public function testMainTest() {
+      // make sure the module we enabled for this purpose tells us to visit a
+      // specific page on it.
+    $this->assertRaw(t('Visit page !l', array('!l' => l(t('ktodo_test'), 'ktodo_test'))));
+
+       // visit said page, filling the requirement.
+    $this->drupalGet('node/25/edit');
+
+      // since we've just filled the requirement (visiting the page, make sure
+      // we are no longer being asked to visit the page.
+    $this->assertNoRaw(t('Visit page !l', array('!l' => l(t('ktodo_test'), 'ktodo_test'))));
+  }
+}

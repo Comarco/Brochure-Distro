@@ -1,0 +1,150 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * This module makes it possible for modules to keep track of things which need
+ * to be done for them to be fully functional. For example, an international
+ * Feature might check if more than one language is available and, if not,
+ * define the todo task of "only one language is available for now. You can
+ * enable more languages here" with a link. Once the requirement is fulfilled,
+ * the todo item disappears.
+ *
+ * Differs from the hook_requirements system in that this system is less
+ * technical and action-based. Do this, do that, etc.
+ *
+ * Third-party modules define todo tasks through by implementing hook_ktodo()
+ * 
+ * See README.txt
+ */
+
+/*
+ * Implements hook_perm();
+ */
+function ktodo_perm() {
+  return array('view ktodo items');
+}
+
+/*
+ * Implements hook_block();
+ */
+function ktodo_block($op = 'list', $delta = 0, $edit = array()) {
+  if ($op == 'list') {
+    $blocks[0]['info'] = t('ktodo list');
+    // Could be cached, later.
+    $blocks[0]['cache'] = BLOCK_NO_CACHE;
+    return $blocks;
+  }
+  elseif ($op == 'view') {
+    $block = array();
+
+    switch ($delta) {
+      case 0:
+        if (user_access('view ktodo items')) {
+          $block['subject'] = t('Todo list');
+            // send localized and unlocalized items to the theme function.
+          $block['content'] = theme('ktodo_block', ktodo_localize_tasks(ktodo_get_tasks()), ktodo_get_tasks());
+        }
+        return $block;
+      default:
+        return;
+    }
+  }
+}
+
+/*
+ * Implements hook_theme();
+ */
+function ktodo_theme() {
+  return array(
+    'ktodo_block' => array(
+      'arguments' => array('localized_tasks' => NULL, 'unlocalized_tasks' => NULL),
+    ),
+  );
+}
+
+/* ktodo_get_tasks()
+ *
+ * gets all tasks in the format
+ *
+ * @return
+ *   array(
+ *      // note: title should not be localized.
+ *    'title' => 'Visit page @l',
+ *    'args' => array(
+ *      '@l' => l('ktodo_test', 'ktodo_test'),
+ *   );
+ *
+ * They're all unlocalized; the reason we localize them as
+ * late as possible before outputting them is in case someone wants to
+ * use this function to, for example, email of list of tasks to
+ * someone who speaks a different language than the current interface
+ * language.
+ */
+function theme_ktodo_block($localized_tasks, $unlocalized_tasks) {
+  $output = '';
+
+  if (count($unlocalized_tasks)) {
+    $output = '<ul><li>';
+    $output .= implode('</li><li>', $localized_tasks);
+    $output .= '</li></ul>';
+  };
+
+  return $output;
+}
+
+/* ktodo_get_tasks()
+ *
+ * gets all tasks in the format
+ *
+ * @return
+ *   array(
+ *      // note: title should not be localized.
+ *    'title' => 'Visit page @l',
+ *    'args' => array(
+ *      '@l' => l('ktodo_test', 'ktodo_test'),
+ *   );
+ *
+ * They're all unlocalized; the reason we localize them as
+ * late as possible before outputting them is in case someone wants to
+ * use this function to, for example, email of list of tasks to
+ * someone who speaks a different language than the current interface
+ * language.
+ */
+function ktodo_get_tasks() {
+  $r = module_invoke_all('ktodo');
+
+  return $r;
+}
+
+/* ktodo_localize_tasks()
+ *
+ * @param $tasks
+ *
+ * all tasks in the format
+ *   array(
+ *      // note: title should not be localized.
+ *    'title' => 'Visit page @l',
+ *    'args' => array(
+ *      '@l' => l('ktodo_test', 'ktodo_test'),
+ *   );
+ *
+ * @param $langcode
+ *
+ * a two-letter language if other than the current site language,
+ * defaults to NULL.
+ *
+ * @return
+ *   array(
+ *     0 => 'this is a localized string',
+ *   );
+ */
+function ktodo_localize_tasks($tasks, $langcode = NULL) {
+  $r = array();
+
+  foreach ($tasks as $task) {
+    $r[] = t($task['title'], $task['args'], $langcode);
+  }
+
+  return $r;
+}
