@@ -8,8 +8,8 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
   $layout = new stdClass;
   $layout->disabled = FALSE; /* Edit this to true to make a default layout disabled initially */
   $layout->api_version = 1;
-  $layout->name = '2_1_4_myttak';
-  $layout->admin_title = '2-1-4 colones ';
+  $layout->name = '2_1_4_nodes_basic';
+  $layout->admin_title = '2-1-4 colones pour nodes (basic)';
   $layout->admin_description = '';
   $layout->category = '';
   $layout->plugin = 'flexible';
@@ -56,7 +56,6 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
         'contains' => 'region',
         'children' => array(
           0 => 'main_left',
-          1 => 'main_right',
         ),
         'parent' => 'main',
         'class' => '',
@@ -64,15 +63,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       'main_left' => array(
         'type' => 'region',
         'title' => 'Main Left',
-        'width' => '69.74055273547658',
-        'width_type' => '%',
-        'parent' => '1',
-        'class' => '',
-      ),
-      'main_right' => array(
-        'type' => 'region',
-        'title' => 'Main Right',
-        'width' => '30.259447264523413',
+        'width' => 100,
         'width_type' => '%',
         'parent' => '1',
         'class' => '',
@@ -141,12 +132,12 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
     ),
   );
 
-  $export['2_1_4_myttak'] = $layout;
+  $export['2_1_4_nodes_basic'] = $layout;
   $layout = new stdClass;
   $layout->disabled = FALSE; /* Edit this to true to make a default layout disabled initially */
   $layout->api_version = 1;
-  $layout->name = '2_1_4_nodes_myttak';
-  $layout->admin_title = '2-1-4 colones pour nodes et le reste';
+  $layout->name = '3_2_1_4_brochure_basic';
+  $layout->admin_title = '3-2-1-4 colones';
   $layout->admin_description = '';
   $layout->category = '';
   $layout->plugin = 'flexible';
@@ -165,10 +156,12 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
         'width' => 100,
         'width_type' => '%',
         'children' => array(
-          0 => 1,
-          1 => 'main-row',
-          2 => 2,
-          3 => 3,
+          0 => 5,
+          1 => 4,
+          2 => 1,
+          3 => 'main-row',
+          4 => 2,
+          5 => 3,
         ),
         'parent' => 'canvas',
       ),
@@ -182,7 +175,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       ),
       'center' => array(
         'type' => 'region',
-        'title' => 'Ads - Partners',
+        'title' => 'Main',
         'width' => 100,
         'width_type' => '%',
         'parent' => 'main-row',
@@ -199,7 +192,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       ),
       'main_left' => array(
         'type' => 'region',
-        'title' => 'Main Left',
+        'title' => 'Top',
         'width' => 100,
         'width_type' => '%',
         'parent' => '1',
@@ -266,9 +259,52 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
         'parent' => '3',
         'class' => 'footer-panel',
       ),
+      4 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'logo',
+          1 => 'header',
+        ),
+        'parent' => 'main',
+        'class' => '',
+      ),
+      'header' => array(
+        'type' => 'region',
+        'title' => 'Header',
+        'width' => '74.9650379938157',
+        'width_type' => '%',
+        'parent' => '4',
+        'class' => 'header',
+      ),
+      'logo' => array(
+        'type' => 'region',
+        'title' => 'logo',
+        'width' => '25.034962006184298',
+        'width_type' => '%',
+        'parent' => '4',
+        'class' => '',
+      ),
+      5 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'very_top',
+        ),
+        'parent' => 'main',
+        'class' => '',
+      ),
+      'very_top' => array(
+        'type' => 'region',
+        'title' => 'Very Top',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '5',
+        'class' => '',
+      ),
     ),
   );
 
-  $export['2_1_4_nodes_myttak'] = $layout;
+  $export['3_2_1_4_brochure_basic'] = $layout;
   return $export;
 }
