@@ -45,7 +45,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       ),
       'center' => array(
         'type' => 'region',
-        'title' => 'Ads - Partners',
+        'title' => 'Ads',
         'width' => 100,
         'width_type' => '%',
         'parent' => 'main-row',
@@ -62,7 +62,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       ),
       'main_left' => array(
         'type' => 'region',
-        'title' => 'Main Left',
+        'title' => 'Main',
         'width' => 100,
         'width_type' => '%',
         'parent' => '1',
@@ -272,7 +272,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       'header' => array(
         'type' => 'region',
         'title' => 'Header',
-        'width' => '74.9650379938157',
+        'width' => '65.50866069753184',
         'width_type' => '%',
         'parent' => '4',
         'class' => 'header',
@@ -280,7 +280,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       'logo' => array(
         'type' => 'region',
         'title' => 'logo',
-        'width' => '25.034962006184298',
+        'width' => '34.491339302468155',
         'width_type' => '%',
         'parent' => '4',
         'class' => '',

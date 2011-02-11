@@ -520,6 +520,26 @@ function kt_brochure_layouts_boxes_default_page_manager_handlers() {
     $display->panels['logo'][0] = 'new-8';
     $pane = new stdClass;
     $pane->pid = 'new-9';
+    $pane->panel = 'logo';
+    $pane->type = 'block';
+    $pane->subtype = 'custom_pagers-1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-9'] = $pane;
+    $display->panels['logo'][1] = 'new-9';
+    $pane = new stdClass;
+    $pane->pid = 'new-10';
     $pane->panel = 'main_left';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
@@ -544,10 +564,10 @@ function kt_brochure_layouts_boxes_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-9'] = $pane;
-    $display->panels['main_left'][0] = 'new-9';
+    $display->content['new-10'] = $pane;
+    $display->panels['main_left'][0] = 'new-10';
     $pane = new stdClass;
-    $pane->pid = 'new-10';
+    $pane->pid = 'new-11';
     $pane->panel = 'very_top';
     $pane->type = 'block';
     $pane->subtype = 'superfish-1';
@@ -564,8 +584,8 @@ function kt_brochure_layouts_boxes_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-10'] = $pane;
-    $display->panels['very_top'][0] = 'new-10';
+    $display->content['new-11'] = $pane;
+    $display->panels['very_top'][0] = 'new-11';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -588,16 +608,16 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
   $page->path = 'front';
   $page->access = array();
   $page->menu = array(
-      'type' => 'normal',
-      'title' => 'Home',
-      'name' => 'primary-links',
+    'type' => 'normal',
+    'title' => 'Home',
+    'name' => 'primary-links',
+    'weight' => '0',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
       'weight' => '0',
-      'parent' => array(
-        'type' => 'none',
-        'title' => '',
-        'name' => 'navigation',
-        'weight' => '0',
-        ),
+    ),
   );
   $page->arguments = array();
   $page->conf = array();
@@ -627,7 +647,6 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
-      'default' => NULL,
       'center' => NULL,
       'main_left' => NULL,
       'col_1' => NULL,
@@ -638,8 +657,9 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
       'header' => NULL,
       'logo' => NULL,
       'very_top' => NULL,
+      'default' => NULL,
     ),
-    'style' => 'rounded_corners',
+    'style' => 'default',
   );
   $display->cache = array();
   $display->title = '';
@@ -685,8 +705,8 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_pager_settings' => 1,
-      'use_pager' => 1,
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
       'nodes_per_page' => '3',
       'pager_id' => '',
       'offset' => '0',
@@ -696,7 +716,7 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
       'link_to_view' => 0,
       'args' => '',
       'url' => '',
-      'display' => 'page_1',
+      'display' => 'block_1',
       'override_title' => 0,
       'override_title_text' => '',
     );

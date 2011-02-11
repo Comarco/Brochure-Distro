@@ -309,7 +309,7 @@ function kt_brochure_layouts_boxes_views_default_views() {
   $handler->override_option('style_plugin', 'slideshow');
   $handler->override_option('style_options', array(
     'type' => 'ul',
-    'mode' => 'views_slideshow_thumbnailhover',
+    'mode' => 'views_slideshow_singleframe',
     'views_slideshow_singleframe-prefix' => '',
     'views_slideshow_singleframe' => array(
       'timeout' => '5000',
@@ -332,7 +332,7 @@ function kt_brochure_layouts_boxes_views_default_views() {
       'pager_click_to_page' => 0,
       'image_count' => '0',
       'items_per_slide' => '1',
-      'effect' => 'fade',
+      'effect' => 'slideX',
       'sync' => '1',
       'nowrap' => '0',
       'advanced' => '',
@@ -384,6 +384,174 @@ function kt_brochure_layouts_boxes_views_default_views() {
   ));
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
+
+  $views[$view->name] = $view;
+
+  // Exported view: views_pagers
+  $view = new view;
+  $view->name = 'views_pagers';
+  $view->description = 'Les vues pour custom pagers';
+  $view->tag = 'brochure';
+  $view->view_php = '';
+  $view->base_table = 'node';
+  $view->is_cacheable = FALSE;
+  $view->api_version = 2;
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+  $handler = $view->new_display('default', 'Basic galleries views', 'default');
+  $handler->override_option('fields', array(
+    'field_gallery_fid' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'strip_tags' => 0,
+        'html' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'imagefield__lightshow2__scaled__original',
+      'multiple' => array(
+        'group' => 1,
+        'multiple_number' => '1',
+        'multiple_from' => '',
+        'multiple_reversed' => 0,
+      ),
+      'exclude' => 0,
+      'id' => 'field_gallery_fid',
+      'table' => 'node_data_field_gallery',
+      'field' => 'field_gallery_fid',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Remplacer',
+      ),
+    ),
+  ));
+  $handler->override_option('sorts', array(
+    'created' => array(
+      'order' => 'ASC',
+      'granularity' => 'second',
+      'id' => 'created',
+      'table' => 'node',
+      'field' => 'created',
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('arguments', array(
+    'type' => array(
+      'default_action' => 'ignore',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'Tous / Toutes',
+      'title' => '',
+      'breadcrumb' => '',
+      'default_argument_type' => 'fixed',
+      'default_argument' => '',
+      'validate_type' => 'none',
+      'validate_fail' => 'not found',
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+        '3' => 0,
+        '6' => 0,
+      ),
+      'relationship' => 'none',
+      'default_options_div_prefix' => '',
+      'default_argument_user' => 0,
+      'default_argument_fixed' => '',
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'blog' => 0,
+        'faq' => 0,
+        'gallery' => 0,
+        'livre' => 0,
+      ),
+      'validate_argument_node_access' => 0,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(
+        '2' => 0,
+      ),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_php' => '',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'status' => array(
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'operator' => '=',
+      'value' => '1',
+      'group' => 0,
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+    ),
+  ));
+  $handler->override_option('access', array(
+    'type' => 'none',
+    'role' => array(),
+    'perm' => '',
+  ));
+  $handler->override_option('cache', array(
+    'type' => 'none',
+  ));
+  $handler->override_option('title', 'Galeries');
+  $handler->override_option('header_format', '1');
+  $handler->override_option('footer_format', '1');
+  $handler->override_option('empty_format', '1');
+  $handler->override_option('items_per_page', 0);
+  $handler->override_option('use_pager', 'mini');
+  $handler->override_option('use_more', 0);
+  $handler->override_option('use_more_always', 0);
+  $handler->override_option('use_more_text', 'Toutes les galeries');
+  $handler->override_option('link_display', 'page_2');
+  $handler->override_option('distinct', 0);
+  $handler->override_option('row_plugin', 'node');
+  $handler->override_option('row_options', array(
+    'relationship' => 'none',
+    'build_mode' => 'teaser',
+    'links' => 0,
+    'comments' => 0,
+  ));
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->override_option('path', 'galspager');
+  $handler->override_option('menu', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('tab_options', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
 
   $views[$view->name] = $view;
 

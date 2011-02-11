@@ -342,10 +342,14 @@ function kt_simple_gallery_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
+  $handler->override_option('title', '3 last galleries');
+  $handler->override_option('empty', 'You should add some galleries to the system in order to see something here.');
+  $handler->override_option('empty_format', '1');
   $handler->override_option('items_per_page', 6);
   $handler->override_option('use_pager', '1');
   $handler->override_option('style_plugin', 'grid');
   $handler->override_option('style_options', array(
+    'grouping' => '',
     'columns' => '3',
     'alignment' => 'horizontal',
     'fill_single_line' => 1,
@@ -406,6 +410,14 @@ function kt_simple_gallery_views_default_views() {
     'default' => 0,
   ));
   $handler->override_option('sitename_title', FALSE);
+  $handler = $view->new_display('block', 'Galleries for frontpage', 'block_1');
+  $handler->override_option('items_per_page', 3);
+  $handler->override_option('use_pager', '0');
+  $handler->override_option('use_more', 1);
+  $handler->override_option('use_more_always', 0);
+  $handler->override_option('use_more_text', 'See all the galleries');
+  $handler->override_option('block_description', '');
+  $handler->override_option('block_caching', -1);
 
   $views[$view->name] = $view;
 

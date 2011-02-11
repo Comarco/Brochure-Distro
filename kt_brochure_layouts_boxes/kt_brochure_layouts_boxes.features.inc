@@ -17,9 +17,6 @@ function kt_brochure_layouts_boxes_ctools_plugin_api() {
   elseif ($module == "strongarm" && $api == "strongarm") {
     return array("version" => 1);
   }
-  elseif ($module == "stylizer" && $api == "") {
-    return array("version" => '');
-  }
 }
 
 /**
@@ -82,7 +79,7 @@ function kt_brochure_layouts_boxes_imagecache_default_presets() {
             'xpos' => 0,
             'ypos' => 0,
             'alpha' => '100',
-            'path' => 'sites/all/modules/features/kt_brochure_layouts_boxes/images/cadreflou210x130.png',
+            'path' => 'sites/all/modules/features/features-brochure/kt_brochure_layouts_boxes/images/cadreflou210x130.png',
             'dimensions' => 'original',
           ),
         ),
