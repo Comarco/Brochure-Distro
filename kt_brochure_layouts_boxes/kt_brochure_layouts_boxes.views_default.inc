@@ -237,7 +237,6 @@ function kt_brochure_layouts_boxes_views_default_views() {
   $handler->override_option('title', 'Show a node randomly, can be filterer by content type');
   $handler->override_option('empty', 'If you are using this block in Panels, you should give an argument to this pane. Preciselly, give a node ID.');
   $handler->override_option('empty_format', '1');
-  $handler->override_option('items_per_page', 0);
   $handler->override_option('style_options', array(
     'grouping' => '',
   ));
@@ -371,11 +370,11 @@ function kt_brochure_layouts_boxes_views_default_views() {
       'remember_slide' => 0,
       'remember_slide_days' => '1',
       'pager_event' => 'mouseover',
-      'controls' => '0',
+      'controls' => '1',
       'image_count' => '0',
-      'effect' => 'fade',
+      'effect' => 'blindZ',
       'sync' => '1',
-      'nowrap' => '1',
+      'nowrap' => '0',
       'advanced' => '',
       'ie' => array(
         'cleartype' => 'true',

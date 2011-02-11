@@ -16,6 +16,7 @@ function kt_bookmarks_taxonomy_default_vocabularies() {
       'tags' => '1',
       'module' => 'features_kt_bookmark_tags',
       'weight' => '-2',
+      'language' => '',
       'nodes' => array(
         'kt_bookmark' => 'kt_bookmark',
       ),

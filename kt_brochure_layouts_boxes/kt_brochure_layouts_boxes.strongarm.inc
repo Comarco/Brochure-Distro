@@ -532,6 +532,7 @@ Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cu
         'at-menu' => 'at-inline-menu clearfix',
       ),
       'superfish-2' => array(),
+      'superfish-1' => array(),
     ),
     'views' => array(
       'view-myttak_home_sections-display-default' => array(

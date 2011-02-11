@@ -12,6 +12,7 @@ function kt_bueditor_imce_strongarm() {
   $strongarm->value = array(
     1 => array(
       'name' => 'User-1',
+      'usertab' => 1,
       'filesize' => 0,
       'quota' => 0,
       'tuquota' => 0,
@@ -52,6 +53,7 @@ function kt_bueditor_imce_strongarm() {
     ),
     2 => array(
       'name' => 'Sample profile',
+      'usertab' => 1,
       'filesize' => 1,
       'quota' => 2,
       'tuquota' => 0,
