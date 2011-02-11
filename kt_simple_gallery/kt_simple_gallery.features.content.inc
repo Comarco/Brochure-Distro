@@ -141,6 +141,7 @@ function kt_simple_gallery_content_default_fields() {
         'node_description' => 0,
         'imagefield_title' => 0,
         'imagefield_alt' => 0,
+        'taxonomy_3' => 0,
         'cck_field_kt_teaser_img' => 0,
         'cck_field_kt_gallery_desc' => 0,
       ),

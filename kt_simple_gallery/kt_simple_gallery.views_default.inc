@@ -342,6 +342,9 @@ function kt_simple_gallery_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
+  $handler->override_option('title', 'Images Gallery');
+  $handler->override_option('empty', 'You should add some galleries to your system to see this block filed with anything');
+  $handler->override_option('empty_format', '1');
   $handler->override_option('items_per_page', 6);
   $handler->override_option('use_pager', '1');
   $handler->override_option('style_plugin', 'grid');
