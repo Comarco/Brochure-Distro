@@ -227,6 +227,24 @@ function kt_brochure_layouts_boxes_views_default_views() {
       'field' => 'status',
       'relationship' => 'none',
     ),
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'kt_gallery' => 'kt_gallery',
+        'page' => 'page',
+        'story' => 'story',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('access', array(
     'type' => 'none',
@@ -234,16 +252,93 @@ function kt_brochure_layouts_boxes_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('title', 'Show a node randomly, can be filterer by content type');
-  $handler->override_option('empty', 'If you are using this block in Panels, you should give an argument to this pane. Preciselly, give a node ID.');
+  $handler->override_option('empty', 'If you are using this block in Panels, you should give an argument to this pane.');
   $handler->override_option('empty_format', '1');
+  $handler->override_option('style_plugin', 'slideshow');
   $handler->override_option('style_options', array(
-    'grouping' => '',
+    'type' => 'ul',
+    'mode' => 'views_slideshow_thumbnailhover',
+    'views_slideshow_singleframe-prefix' => '',
+    'views_slideshow_singleframe' => array(
+      'timeout' => '5000',
+      'delay' => '0',
+      'speed' => '700',
+      'start_paused' => 0,
+      'fixed_height' => '1',
+      'random' => '0',
+      'pause' => '1',
+      'pause_on_click' => '0',
+      'pause_when_hidden' => 0,
+      'pause_when_hidden_type' => 'full',
+      'amount_allowed_visible' => '',
+      'remember_slide' => 0,
+      'remember_slide_days' => '1',
+      'controls' => '0',
+      'pager' => '0',
+      'pager_type' => 'Numbered',
+      'pager_hover' => '2',
+      'pager_click_to_page' => 0,
+      'image_count' => '0',
+      'items_per_slide' => '1',
+      'effect' => 'fade',
+      'sync' => '1',
+      'nowrap' => '0',
+      'advanced' => '',
+      'ie' => array(
+        'cleartype' => 'true',
+        'cleartypenobg' => 'false',
+      ),
+    ),
+    'views_slideshow_thumbnailhover-prefix' => '',
+    'views_slideshow_thumbnailhover' => array(
+      'main_fields' => array(
+        'field_kt_teaser_img_fid' => 'field_kt_teaser_img_fid',
+        'title' => 0,
+        'body' => 0,
+        'edit_node' => 0,
+      ),
+      'breakout_fields' => array(
+        'title' => 'title',
+        'field_kt_teaser_img_fid' => 0,
+        'body' => 0,
+        'edit_node' => 0,
+      ),
+      'teasers_last' => 1,
+      'timeout' => '5000',
+      'delay' => '0',
+      'speed' => '300',
+      'start_paused' => 1,
+      'fixed_height' => '1',
+      'random' => '0',
+      'pause' => '1',
+      'pause_on_click' => '0',
+      'pause_when_hidden' => 0,
+      'pause_when_hidden_type' => 'full',
+      'amount_allowed_visible' => '',
+      'remember_slide' => 0,
+      'remember_slide_days' => '1',
+      'pager_event' => 'mouseover',
+      'controls' => '0',
+      'image_count' => '0',
+      'effect' => 'fade',
+      'sync' => '1',
+      'nowrap' => '1',
+      'advanced' => '',
+      'ie' => array(
+        'cleartype' => 'true',
+        'cleartypenobg' => 'false',
+      ),
+    ),
+  ));
+  $handler->override_option('row_options', array(
+    'inline' => array(),
+    'separator' => '',
+    'hide_empty' => 1,
   ));
   $handler = $view->new_display('block', 'Show a specific node (ID)', 'block_1');
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
-  $handler = $view->new_display('block', 'Show a node randomly', 'block_2');
+  $handler = $view->new_display('block', 'A slideshow of galleries', 'block_2');
   $handler->override_option('sorts', array(
     'random' => array(
       'order' => 'ASC',
@@ -256,14 +351,131 @@ function kt_brochure_layouts_boxes_views_default_views() {
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('arguments', array());
+  $handler->override_option('filters', array(
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'kt_gallery' => 'kt_gallery',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('title', 'Galleries slideshow');
+  $handler->override_option('empty', 'You should post some items');
+  $handler->override_option('style_options', array(
+    'type' => 'ul',
+    'mode' => 'views_slideshow_singleframe',
+    'views_slideshow_singleframe-prefix' => '',
+    'views_slideshow_singleframe' => array(
+      'timeout' => '5000',
+      'delay' => '0',
+      'speed' => '700',
+      'start_paused' => 0,
+      'fixed_height' => '1',
+      'random' => '0',
+      'pause' => '1',
+      'pause_on_click' => '0',
+      'pause_when_hidden' => 0,
+      'pause_when_hidden_type' => 'full',
+      'amount_allowed_visible' => '',
+      'remember_slide' => 0,
+      'remember_slide_days' => '1',
+      'controls' => '0',
+      'pager' => '0',
+      'pager_type' => 'Numbered',
+      'pager_hover' => '2',
+      'pager_click_to_page' => 0,
+      'image_count' => '0',
+      'items_per_slide' => '1',
+      'effect' => 'fade',
+      'sync' => '1',
+      'nowrap' => '0',
+      'advanced' => '',
+      'ie' => array(
+        'cleartype' => 'true',
+        'cleartypenobg' => 'false',
+      ),
+    ),
+    'views_slideshow_thumbnailhover-prefix' => '',
+    'views_slideshow_thumbnailhover' => array(
+      'main_fields' => array(
+        'field_kt_teaser_img_fid' => 0,
+        'title' => 0,
+        'body' => 0,
+        'edit_node' => 0,
+      ),
+      'breakout_fields' => array(
+        'field_kt_teaser_img_fid' => 0,
+        'title' => 0,
+        'body' => 0,
+        'edit_node' => 0,
+      ),
+      'teasers_last' => 1,
+      'timeout' => '5000',
+      'delay' => '0',
+      'speed' => '300',
+      'start_paused' => 0,
+      'fixed_height' => '1',
+      'random' => '0',
+      'pause' => '1',
+      'pause_on_click' => '0',
+      'pause_when_hidden' => 0,
+      'pause_when_hidden_type' => 'full',
+      'amount_allowed_visible' => '',
+      'remember_slide' => 0,
+      'remember_slide_days' => '1',
+      'pager_event' => 'mouseover',
+      'controls' => '0',
+      'image_count' => '0',
+      'effect' => 'fade',
+      'sync' => '1',
+      'nowrap' => '1',
+      'advanced' => '',
+      'ie' => array(
+        'cleartype' => 'true',
+        'cleartypenobg' => 'false',
+      ),
+    ),
+  ));
+  $handler->override_option('row_options', array());
+  $handler->override_option('block_description', '');
+  $handler->override_option('block_caching', -1);
+  $handler = $view->new_display('block', 'A slideshow of promoted nodes', 'block_3');
   $handler->override_option('arguments', array(
     'type' => array(
-      'default_action' => 'empty',
+      'default_action' => 'ignore',
       'style_plugin' => 'default_summary',
       'style_options' => array(),
       'wildcard' => 'all',
       'wildcard_substitution' => 'All',
-      'title' => 'Last %1',
+      'title' => '%1',
       'breadcrumb' => '',
       'default_argument_type' => 'fixed',
       'default_argument' => '',
@@ -305,83 +517,58 @@ function kt_brochure_layouts_boxes_views_default_views() {
       'validate_argument_php' => '',
     ),
   ));
-  $handler->override_option('empty', 'You should post some items');
-  $handler->override_option('style_plugin', 'slideshow');
-  $handler->override_option('style_options', array(
-    'type' => 'ul',
-    'mode' => 'views_slideshow_singleframe',
-    'views_slideshow_singleframe-prefix' => '',
-    'views_slideshow_singleframe' => array(
-      'timeout' => '5000',
-      'delay' => '0',
-      'speed' => '700',
-      'start_paused' => 0,
-      'fixed_height' => '1',
-      'random' => '0',
-      'pause' => '1',
-      'pause_on_click' => '0',
-      'pause_when_hidden' => 0,
-      'pause_when_hidden_type' => 'full',
-      'amount_allowed_visible' => '',
-      'remember_slide' => 0,
-      'remember_slide_days' => '1',
-      'controls' => '0',
-      'pager' => '0',
-      'pager_type' => 'Numbered',
-      'pager_hover' => '2',
-      'pager_click_to_page' => 0,
-      'image_count' => '0',
-      'items_per_slide' => '1',
-      'effect' => 'slideX',
-      'sync' => '1',
-      'nowrap' => '0',
-      'advanced' => '',
-      'ie' => array(
-        'cleartype' => 'true',
-        'cleartypenobg' => 'false',
+  $handler->override_option('filters', array(
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
       ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
     ),
-    'views_slideshow_thumbnailhover-prefix' => '',
-    'views_slideshow_thumbnailhover' => array(
-      'main_fields' => array(
-        'field_kt_teaser_img_fid' => 'field_kt_teaser_img_fid',
-        'title' => 0,
-        'body' => 0,
-        'edit_node' => 0,
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'kt_gallery' => 'kt_gallery',
+        'page' => 'page',
+        'story' => 'story',
       ),
-      'breakout_fields' => array(
-        'title' => 'title',
-        'field_kt_teaser_img_fid' => 0,
-        'body' => 0,
-        'edit_node' => 0,
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
       ),
-      'teasers_last' => 1,
-      'timeout' => '5000',
-      'delay' => '0',
-      'speed' => '300',
-      'start_paused' => 0,
-      'fixed_height' => '1',
-      'random' => '0',
-      'pause' => '1',
-      'pause_on_click' => '0',
-      'pause_when_hidden' => 0,
-      'pause_when_hidden_type' => 'full',
-      'amount_allowed_visible' => '',
-      'remember_slide' => 0,
-      'remember_slide_days' => '1',
-      'pager_event' => 'mouseover',
-      'controls' => '1',
-      'image_count' => '0',
-      'effect' => 'blindZ',
-      'sync' => '1',
-      'nowrap' => '0',
-      'advanced' => '',
-      'ie' => array(
-        'cleartype' => 'true',
-        'cleartypenobg' => 'false',
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'promote' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
       ),
+      'id' => 'promote',
+      'table' => 'node',
+      'field' => 'promote',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
     ),
   ));
+  $handler->override_option('title', 'A slideshow of promoted nodes');
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
 
@@ -453,7 +640,7 @@ function kt_brochure_layouts_boxes_views_default_views() {
   ));
   $handler->override_option('arguments', array(
     'type' => array(
-      'default_action' => 'ignore',
+      'default_action' => 'not found',
       'style_plugin' => 'default_summary',
       'style_options' => array(),
       'wildcard' => 'all',
@@ -471,7 +658,6 @@ function kt_brochure_layouts_boxes_views_default_views() {
       'validate_user_roles' => array(
         '2' => 0,
         '3' => 0,
-        '6' => 0,
       ),
       'relationship' => 'none',
       'default_options_div_prefix' => '',
@@ -479,15 +665,18 @@ function kt_brochure_layouts_boxes_views_default_views() {
       'default_argument_fixed' => '',
       'default_argument_php' => '',
       'validate_argument_node_type' => array(
-        'blog' => 0,
-        'faq' => 0,
-        'gallery' => 0,
-        'livre' => 0,
+        'kt_bookmark' => 0,
+        'kt_link' => 0,
+        'kt_gallery' => 0,
+        'page' => 0,
+        'story' => 0,
       ),
       'validate_argument_node_access' => 0,
       'validate_argument_nid_type' => 'nid',
       'validate_argument_vocabulary' => array(
+        '1' => 0,
         '2' => 0,
+        '3' => 0,
       ),
       'validate_argument_type' => 'tid',
       'validate_argument_transform' => 0,

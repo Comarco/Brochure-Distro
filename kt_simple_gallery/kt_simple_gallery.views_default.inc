@@ -342,7 +342,7 @@ function kt_simple_gallery_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('title', '3 last galleries');
+  $handler->override_option('title', 'Galleries');
   $handler->override_option('empty', 'You should add some galleries to the system in order to see something here.');
   $handler->override_option('empty_format', '1');
   $handler->override_option('items_per_page', 6);
@@ -365,7 +365,7 @@ function kt_simple_gallery_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->override_option('path', 'galleries');
   $handler->override_option('menu', array(
-    'type' => 'normal',
+    'type' => 'none',
     'title' => 'Gallery',
     'description' => 'Gallery',
     'weight' => '0',
@@ -411,6 +411,7 @@ function kt_simple_gallery_views_default_views() {
   ));
   $handler->override_option('sitename_title', FALSE);
   $handler = $view->new_display('block', 'Galleries for frontpage', 'block_1');
+  $handler->override_option('title', 'Last Galleries');
   $handler->override_option('items_per_page', 3);
   $handler->override_option('use_pager', '0');
   $handler->override_option('use_more', 1);

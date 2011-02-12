@@ -927,6 +927,13 @@ batch*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'teaser_length';
+  $strongarm->value = '400';
+
+  $export['teaser_length'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'theme_brochure_basic_settings';
   $strongarm->value = array(
     'skip_navigation_display' => 'hide',
@@ -973,7 +980,7 @@ batch*';
     'cleanup_article_classes_teaser' => 0,
     'cleanup_article_classes_preview' => 0,
     'cleanup_article_classes_type' => 0,
-    'cleanup_article_classes_language' => 0,
+    'cleanup_article_classes_language' => '0',
     'cleanup_comment_anonymous' => 0,
     'cleanup_comment_article_author' => 0,
     'cleanup_comment_by_viewer' => 0,
@@ -1029,9 +1036,9 @@ batch*';
     'color_enable_schemes' => 'off',
     'mission' => '',
     'default_logo' => 0,
-    'logo_path' => 'sites/test3-brochure-dev2.mercure2/files/sweaver/logo_brochure_basic_temp_draft.png',
+    'logo_path' => 'sites/test4-brochure-dev2.mercure2/files/sweaver/logo_brochure_basic_1_live.png',
     'default_favicon' => 0,
-    'favicon_path' => 'sites/test3-brochure-dev2.mercure2/files/sweaver/favicon_brochure_basic_temp_draft.png',
+    'favicon_path' => 'sites/test4-brochure-dev2.mercure2/files/sweaver/favicon_brochure_basic_1_live.png',
     'primary_links' => 1,
     'secondary_links' => 1,
     'toggle_logo' => 1,

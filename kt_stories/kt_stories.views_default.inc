@@ -281,9 +281,10 @@ function kt_stories_views_default_views() {
     'name' => 'navigation',
   ));
   $handler->override_option('displays', array(
-    'page_1' => 'page_1',
-    'default' => 0,
-    'block_1' => 0,
+    'default' => 'default',
+    'block_1' => 'block_1',
+    'block_2' => 'block_2',
+    'page_2' => 'page_2',
   ));
   $handler->override_option('sitename_title', FALSE);
   $handler = $view->new_display('block', 'Stories cycle', 'block_2');
@@ -476,11 +477,11 @@ function kt_stories_views_default_views() {
         'target' => '',
         'help' => '',
         'trim' => 1,
-        'max_length' => '400',
+        'max_length' => '280',
         'word_boundary' => 1,
         'ellipsis' => 1,
-        'html' => 1,
-        'strip_tags' => 0,
+        'html' => 0,
+        'strip_tags' => 1,
       ),
       'empty' => '',
       'hide_empty' => 1,
@@ -589,7 +590,7 @@ function kt_stories_views_default_views() {
   ));
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
-  $handler = $view->new_display('page', 'Page panel fields', 'page_2');
+  $handler = $view->new_display('page', 'The News Page', 'page_2');
   $handler->override_option('fields', array(
     'teaser' => array(
       'label' => '',
@@ -780,24 +781,9 @@ function kt_stories_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('row_plugin', 'panels_fields');
-  $handler->override_option('row_options', array(
-    'inline' => array(),
-    'separator' => '',
-    'hide_empty' => 0,
-    'layout' => 'twocol',
-    'change' => 'Change',
-    'regions' => array(
-      'teaser' => 'left',
-      'field_kt_stories_img_gal_fid' => 'right',
-      'title' => 'left',
-      'field_kt_stories_subtitle_value' => 'left',
-      'field_kt_stories_files_fid' => 'right',
-    ),
-  ));
   $handler->override_option('path', 'stories');
   $handler->override_option('menu', array(
-    'type' => 'normal',
+    'type' => 'none',
     'title' => 'News',
     'description' => 'Al the stories posted in this website',
     'weight' => '0',

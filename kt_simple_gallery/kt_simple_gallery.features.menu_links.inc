@@ -25,24 +25,6 @@ function kt_simple_gallery_menu_default_menu_links() {
     'weight' => '0',
     'parent_path' => 'node/add',
   );
-  // Exported menu link: primary-links:galleries
-  $menu_links['primary-links:galleries'] = array(
-    'menu_name' => 'primary-links',
-    'link_path' => 'galleries',
-    'router_path' => 'galleries',
-    'link_title' => 'Gallery',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Gallery',
-      ),
-    ),
-    'module' => 'system',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Gallery');

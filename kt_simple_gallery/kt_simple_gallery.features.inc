@@ -116,29 +116,6 @@ function kt_simple_gallery_imagecache_default_presets() {
           'action' => 'imagecache_autorotate',
           'data' => array(),
         ),
-        '3' => array(
-          'weight' => '0',
-          'module' => 'imagecache_canvasactions',
-          'action' => 'canvasactions_definecanvas',
-          'data' => array(
-            'RGB' => array(
-              'HEX' => '5aadce',
-            ),
-            'under' => 1,
-            'exact' => array(
-              'width' => '230',
-              'height' => '170',
-              'xpos' => 'center',
-              'ypos' => 'center',
-            ),
-            'relative' => array(
-              'leftdiff' => '',
-              'rightdiff' => '',
-              'topdiff' => '',
-              'bottomdiff' => '',
-            ),
-          ),
-        ),
       ),
     ),
   );
