@@ -422,7 +422,7 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_footer';
-  $strongarm->value = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <img src="/sites/toutpanel-test.mercure2/files/brochure_basic_logo.png" width="137" height="64" alt="brochure_basic_logo.png" /> sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt <a href="contact">mollit anim id est laborum</a>. ';
+  $strongarm->value = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <img src="/sites/all/themes/brochure_basic/logo.png" width="137" height="64" alt="brochure_basic_logo.png" /> sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt <a href="contact">mollit anim id est laborum</a>. ';
 
   $export['site_footer'] = $strongarm;
   $strongarm = new stdClass;
