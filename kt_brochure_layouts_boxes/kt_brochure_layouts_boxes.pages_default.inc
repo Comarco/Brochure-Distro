@@ -44,7 +44,7 @@ function kt_brochure_layouts_boxes_default_page_manager_handlers() {
       'logo' => NULL,
       'very_top' => NULL,
     ),
-    'style' => 'rounded_corners',
+    'style' => 'default',
   );
   $display->cache = array();
   $display->title = '';
@@ -494,7 +494,10 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
   $page->admin_title = 'Front Page Example';
   $page->admin_description = ' ';
   $page->path = 'front';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Home',
@@ -952,7 +955,10 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
   $page->admin_title = 'Links panel';
   $page->admin_description = '';
   $page->path = 'interresting-links';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Links',
@@ -1139,7 +1145,10 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
   $page->admin_title = 'Gallery panel';
   $page->admin_description = '';
   $page->path = 'images';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Gallery',
