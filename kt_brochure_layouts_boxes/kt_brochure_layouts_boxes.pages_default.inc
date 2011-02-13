@@ -1309,7 +1309,10 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
   $page->admin_title = 'Stories panel';
   $page->admin_description = '';
   $page->path = 'news';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'News',
