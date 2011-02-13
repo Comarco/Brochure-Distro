@@ -315,9 +315,9 @@ function kt_links_views_default_views() {
   ));
   $handler->override_option('path', 'links');
   $handler->override_option('menu', array(
-    'type' => 'normal',
-    'title' => 'Links',
-    'description' => 'Links',
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
     'weight' => '0',
     'name' => 'primary-links',
   ));
@@ -405,9 +405,15 @@ function kt_links_views_default_views() {
       ),
     ),
   ));
+  $handler->override_option('title', 'List of last links submitted to the website. Taxonomy argument');
   $handler->override_option('items_per_page', 5);
   $handler->override_option('use_pager', FALSE);
   $handler->override_option('use_more', 1);
+  $handler->override_option('use_more_text', 'See all the links');
+  $handler->override_option('style_plugin', 'default');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+  ));
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
   $handler = $view->new_display('feed', 'Feed', 'feed_1');

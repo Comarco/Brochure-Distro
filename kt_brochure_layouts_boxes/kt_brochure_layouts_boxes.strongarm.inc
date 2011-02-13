@@ -479,6 +479,18 @@ Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cu
       'view-galleries-display-default' => array(
         'at-align-content' => '',
       ),
+      'view-kt_dynamic_blocks-display-block_4' => array(
+        'at-align-content' => '',
+      ),
+      'view-kt_dynamic_blocks-display-block_3' => array(
+        'at-align-content' => '',
+      ),
+      'view-kt_bookmark_list-display-block_1' => array(
+        'at-align-content' => '',
+      ),
+      'view-kt_link_list-display-block_1' => array(
+        'at-align-content' => '',
+      ),
     ),
   );
 
@@ -1036,9 +1048,9 @@ batch*';
     'color_enable_schemes' => 'off',
     'mission' => '',
     'default_logo' => 0,
-    'logo_path' => 'sites/test4-brochure-dev2.mercure2/files/sweaver/logo_brochure_basic_1_live.png',
+    'logo_path' => 'sites/brochure-branche-dev4.mercure2/files/brochure_basic_logo.png',
     'default_favicon' => 0,
-    'favicon_path' => 'sites/test4-brochure-dev2.mercure2/files/sweaver/favicon_brochure_basic_1_live.png',
+    'favicon_path' => 'sites/brochure-branche-dev4.mercure2/files/brochure_basic_favicon.png',
     'primary_links' => 1,
     'secondary_links' => 1,
     'toggle_logo' => 1,
