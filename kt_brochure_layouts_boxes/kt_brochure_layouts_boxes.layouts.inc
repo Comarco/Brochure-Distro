@@ -45,7 +45,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       ),
       'center' => array(
         'type' => 'region',
-        'title' => 'Ads - Partners',
+        'title' => 'Ads',
         'width' => 100,
         'width_type' => '%',
         'parent' => 'main-row',
@@ -62,7 +62,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       ),
       'main_left' => array(
         'type' => 'region',
-        'title' => 'Main Left',
+        'title' => 'Main',
         'width' => 100,
         'width_type' => '%',
         'parent' => '1',

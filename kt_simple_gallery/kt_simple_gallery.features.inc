@@ -58,7 +58,7 @@ function kt_simple_gallery_imagecache_default_presets() {
           'action' => 'imagecache_crop',
           'data' => array(
             'width' => '600',
-            'height' => '350',
+            'height' => '300',
             'xoffset' => 'center',
             'yoffset' => 'center',
           ),
@@ -115,29 +115,6 @@ function kt_simple_gallery_imagecache_default_presets() {
           'module' => 'imagecache_autorotate',
           'action' => 'imagecache_autorotate',
           'data' => array(),
-        ),
-        '3' => array(
-          'weight' => '0',
-          'module' => 'imagecache_canvasactions',
-          'action' => 'canvasactions_definecanvas',
-          'data' => array(
-            'RGB' => array(
-              'HEX' => '5aadce',
-            ),
-            'under' => 1,
-            'exact' => array(
-              'width' => '230',
-              'height' => '170',
-              'xpos' => 'center',
-              'ypos' => 'center',
-            ),
-            'relative' => array(
-              'leftdiff' => '',
-              'rightdiff' => '',
-              'topdiff' => '',
-              'bottomdiff' => '',
-            ),
-          ),
         ),
       ),
     ),

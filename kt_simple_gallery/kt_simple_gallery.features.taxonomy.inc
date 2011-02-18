@@ -16,7 +16,6 @@ function kt_simple_gallery_taxonomy_default_vocabularies() {
       'tags' => '1',
       'module' => 'features_kt_gal_img_type',
       'weight' => '0',
-      'language' => '',
       'nodes' => array(
         'kt_gallery' => 'kt_gallery',
       ),

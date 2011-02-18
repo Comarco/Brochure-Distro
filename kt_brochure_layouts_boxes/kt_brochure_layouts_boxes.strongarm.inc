@@ -436,7 +436,7 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_footer';
-  $strongarm->value = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <img src="/sites/toutpanel-test.mercure2/files/brochure_basic_logo.png" width="137" height="64" alt="brochure_basic_logo.png" /> sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt <a href="contact">mollit anim id est laborum</a>. ';
+  $strongarm->value = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <img src="/sites/all/themes/brochure_basic/logo.png" width="137" height="64" alt="brochure_basic_logo.png" /> sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt <a href="contact">mollit anim id est laborum</a>. ';
 
   $export['site_footer'] = $strongarm;
   $strongarm = new stdClass;
@@ -446,13 +446,6 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm->value = 'front';
 
   $export['site_frontpage'] = $strongarm;
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'site_mail';
-  $strongarm->value = 'webmaster@toutpanel-test.mercure2';
-
-  $export['site_mail'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -466,62 +459,56 @@ Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cu
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'site_name';
-  $strongarm->value = 'toutpanel-test.mercure2';
-
-  $export['site_name'] = $strongarm;
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'site_slogan';
-  $strongarm->value = 'This is My slogan. I am so proud of it :-)';
-
-  $export['site_slogan'] = $strongarm;
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'skinr_adaptivetheme';
+  $strongarm->name = 'skinr_brochure_basic';
   $strongarm->value = array(
     'block' => array(
-      'user-2' => array(
-        'at-grid' => 'grid-4-12',
+      'user-1' => array(
+        'at-menu' => 'at-inline-menu clearfix',
       ),
-      'node-0' => array(
-        'at-grid' => 'grid-4-12',
-      ),
-      'user-3' => array(
-        'at-grid' => 'grid-4-12',
-      ),
-      'search-0' => array(
-        'at-grid' => 'grid-7',
-        'at-align-content' => 'at-align-right-content',
-      ),
-      'boxes-language_switcher_box' => array(
-        'at-grid' => 'grid-1',
-        'at-align-content' => 'at-align-right-content',
-        '_additional' => 'inline',
-      ),
-      'superfish-1' => array(
-        'at-grid' => 'grid-16',
-      ),
-      'boxes-logo_box' => array(
-        'at-grid' => 'grid-3',
-      ),
-      'boxes-mission_box' => array(
-        'at-grid' => 'grid-8',
-      ),
-      'boxes-slogan_box' => array(
-        'at-grid' => 'grid-8',
-      ),
+      'superfish-2' => array(),
+      'superfish-1' => array(),
     ),
     'views' => array(
+      'view-myttak_home_sections-display-default' => array(
+        'at-align-content' => '',
+      ),
+      'view-myttak_home_sections-display-block_2' => array(
+        'at-align-content' => '',
+        '_additional' => 'no-bullet',
+      ),
+      'view-kt_link_list-display-default' => array(
+        'at-align-content' => '',
+        '_additional' => 'no-bullet',
+      ),
+      'view-kt_bookmark_list-display-default' => array(
+        'at-align-content' => '',
+        '_additional' => 'no-bullet',
+      ),
+      'view-kt_stories_list-display-block_2' => array(
+        'at-align-content' => '',
+      ),
+      'view-kt_dynamic_blocks-display-block_2' => array(
+        'at-align-content' => '',
+      ),
       'view-galleries-display-default' => array(
+        'at-align-content' => '',
+      ),
+      'view-kt_dynamic_blocks-display-block_4' => array(
+        'at-align-content' => '',
+      ),
+      'view-kt_dynamic_blocks-display-block_3' => array(
+        'at-align-content' => '',
+      ),
+      'view-kt_bookmark_list-display-block_1' => array(
+        'at-align-content' => '',
+      ),
+      'view-kt_link_list-display-block_1' => array(
         'at-align-content' => '',
       ),
     ),
   );
 
-  $export['skinr_adaptivetheme'] = $strongarm;
+  $export['skinr_brochure_basic'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -1269,18 +1256,30 @@ batch*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'sweaver_plugin_themeclasses_brochure_basic';
+  $strongarm->value = array(
+    'checked' => TRUE,
+    'styles' => array(),
+  );
+
+  $export['sweaver_plugin_themeclasses_brochure_basic'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'sweaver_plugins_weight';
   $strongarm->value = array(
-    'sweaver_plugin_editor' => '-49',
-    'sweaver_plugin_styles' => '-48',
-    'sweaver_plugin_customcss' => '-47',
-    'sweaver_plugin_images' => '-45',
-    'sweaver_plugin_themeswitch' => '-44',
-    'sweaver_plugin_themesettings' => '-43',
-    'sweaver_plugin_themeclasses' => '-42',
-    'sweaver_plugin_fontface' => '-41',
-    'sweaver_plugin_kb' => '-39',
-    'sweaver_plugin_palettes' => '-46',
+    'sweaver_plugin' => -51,
+    'sweaver_plugin_editor' => -49,
+    'sweaver_plugin_styles' => -48,
+    'sweaver_plugin_customcss' => -47,
+    'sweaver_plugin_palettes' => -46,
+    'sweaver_plugin_images' => -45,
+    'sweaver_plugin_themeswitch' => -44,
+    'sweaver_plugin_themesettings' => -43,
+    'sweaver_plugin_themeclasses' => -42,
+    'sweaver_plugin_fontface' => -41,
+    'sweaver_plugin_ds' => -40,
+    'sweaver_plugin_kb' => -39,
   );
 
   $export['sweaver_plugins_weight'] = $strongarm;
@@ -1328,12 +1327,19 @@ batch*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'theme_adaptivetheme_settings';
+  $strongarm->name = 'teaser_length';
+  $strongarm->value = '400';
+
+  $export['teaser_length'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'theme_brochure_basic_settings';
   $strongarm->value = array(
     'skip_navigation_display' => 'hide',
     'breadcrumb_display' => 'yes',
     'breadcrumb_separator' => ' &#187; ',
-    'breadcrumb_home' => 0,
+    'breadcrumb_home' => 1,
     'breadcrumb_trailing' => 0,
     'breadcrumb_title' => 0,
     'display_search_form_label' => 1,
@@ -1360,7 +1366,7 @@ batch*';
     'display_links_default' => 'all',
     'display_links_enable_content_type' => '0',
     'rebuild_registry' => 0,
-    'show_theme_info' => '0',
+    'show_theme_info' => 0,
     'cleanup_classes_section' => 0,
     'cleanup_classes_front' => 0,
     'cleanup_classes_user_status' => 0,
@@ -1374,7 +1380,7 @@ batch*';
     'cleanup_article_classes_teaser' => 0,
     'cleanup_article_classes_preview' => 0,
     'cleanup_article_classes_type' => 0,
-    'cleanup_article_classes_language' => 0,
+    'cleanup_article_classes_language' => '0',
     'cleanup_comment_anonymous' => 0,
     'cleanup_comment_article_author' => 0,
     'cleanup_comment_by_viewer' => 0,
@@ -1408,12 +1414,12 @@ batch*';
     'cleanup_headings_title_class' => 0,
     'cleanup_headings_namespaced_class' => 0,
     'links_add_span_elements' => 0,
-    'at_user_menu' => 0,
+    'at_user_menu' => 1,
     'block_edit_links' => 1,
     'at_admin_hide_help' => 0,
     'layout_method' => '0',
-    'layout_width' => '960px',
-    'layout_sidebar_first_width' => '240',
+    'layout_width' => '1020px',
+    'layout_sidebar_first_width' => '180',
     'layout_sidebar_last_width' => '240',
     'layout_enable_settings' => 'on',
     'layout_enable_width' => 'on',
@@ -1430,21 +1436,22 @@ batch*';
     'color_enable_schemes' => 'off',
     'mission' => '',
     'default_logo' => 0,
-    'logo_path' => 'sites/toutpanel-test.mercure2/files/adaptivetheme_logo.png',
-    'default_favicon' => 1,
-    'favicon_path' => '',
+    'logo_path' => 'sites/all/themes/brochure_basic/logo.png',
+    'default_favicon' => 0,
+    'favicon_path' => 'sites/all/themes/brochure_basic/favicon.png',
     'primary_links' => 1,
     'secondary_links' => 1,
-    'toggle_logo' => 0,
-    'toggle_favicon' => 0,
-    'toggle_name' => 0,
+    'toggle_logo' => 1,
+    'toggle_favicon' => 1,
+    'toggle_name' => 1,
     'toggle_search' => 0,
-    'toggle_slogan' => 0,
-    'toggle_mission' => 0,
+    'toggle_slogan' => 1,
+    'toggle_mission' => 1,
     'toggle_node_user_picture' => 0,
     'toggle_comment_user_picture' => 0,
     'toggle_primary_links' => 0,
     'toggle_secondary_links' => 0,
+    'toggle_node_info_kt_bookmark' => 1,
     'logo_upload' => '',
     'favicon_upload' => '',
     'equalize_leaderboard' => 0,
@@ -1457,10 +1464,10 @@ batch*';
     'exported_settings' => 'settings[skip_navigation_display]="hide"
 settings[breadcrumb_display]="yes"
 settings[breadcrumb_separator]=" &#187; "
-settings[breadcrumb_home]="0"
+settings[breadcrumb_home]="1"
 settings[breadcrumb_trailing]="0"
 settings[breadcrumb_title]="0"
-settings[display_search_form_label]="1"
+settings[display_search_form_label]="0"
 settings[search_snippet]="1"
 settings[search_info_type]="1"
 settings[search_info_user]="1"
@@ -1532,12 +1539,12 @@ settings[cleanup_fields_zebra]="0"
 settings[cleanup_headings_title_class]="0"
 settings[cleanup_headings_namespaced_class]="0"
 settings[links_add_span_elements]="0"
-settings[at_user_menu]="0"
+settings[at_user_menu]="1"
 settings[block_edit_links]="1"
 settings[at_admin_hide_help]="0"
 settings[layout_method]="0"
-settings[layout_width]="960px"
-settings[layout_sidebar_first_width]="240"
+settings[layout_width]="1020px"
+settings[layout_sidebar_first_width]="180"
 settings[layout_sidebar_last_width]="240"
 settings[layout_enable_settings]="on"
 settings[layout_enable_width]="on"
@@ -1555,7 +1562,7 @@ settings[color_enable_schemes]="off"
 ',
   );
 
-  $export['theme_adaptivetheme_settings'] = $strongarm;
+  $export['theme_brochure_basic_settings'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -1812,7 +1819,7 @@ settings[color_enable_schemes]="off"
     'toggle_node_info_kt_bookmark' => 1,
     'toggle_node_info_kt_gallery' => 1,
     'toggle_node_info_kt_link' => 1,
-    'toggle_node_info_page' => 0,
+    'toggle_node_info_page' => FALSE,
     'toggle_node_info_story' => 1,
     'default_logo' => 1,
     'logo_path' => '',

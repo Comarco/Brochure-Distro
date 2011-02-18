@@ -196,7 +196,6 @@ function kt_stories_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('items_per_page', 40);
   $handler->override_option('use_more', 0);
   $handler->override_option('use_more_always', 0);
   $handler->override_option('link_display', 'page_2');
@@ -282,9 +281,10 @@ function kt_stories_views_default_views() {
     'name' => 'navigation',
   ));
   $handler->override_option('displays', array(
-    'page_1' => 'page_1',
-    'default' => 0,
-    'block_1' => 0,
+    'default' => 'default',
+    'block_1' => 'block_1',
+    'block_2' => 'block_2',
+    'page_2' => 'page_2',
   ));
   $handler->override_option('sitename_title', FALSE);
   $handler = $view->new_display('block', 'Stories cycle', 'block_2');
@@ -477,11 +477,11 @@ function kt_stories_views_default_views() {
         'target' => '',
         'help' => '',
         'trim' => 1,
-        'max_length' => '400',
+        'max_length' => '280',
         'word_boundary' => 1,
         'ellipsis' => 1,
-        'html' => 1,
-        'strip_tags' => 0,
+        'html' => 0,
+        'strip_tags' => 1,
       ),
       'empty' => '',
       'hide_empty' => 1,
@@ -508,7 +508,7 @@ function kt_stories_views_default_views() {
       'delay' => '0',
       'speed' => '700',
       'start_paused' => 0,
-      'fixed_height' => '1',
+      'fixed_height' => '0',
       'random' => '0',
       'pause' => '1',
       'pause_on_click' => '0',
@@ -535,7 +535,22 @@ function kt_stories_views_default_views() {
     ),
     'views_slideshow_thumbnailhover-prefix' => '',
     'views_slideshow_thumbnailhover' => array(
-      'hover_breakout' => 'teaser',
+      'main_fields' => array(
+        'title' => 0,
+        'created' => 0,
+        'edit_node' => 0,
+        'delete_node' => 0,
+        'field_kt_teaser_img_fid' => 0,
+        'body' => 0,
+      ),
+      'breakout_fields' => array(
+        'title' => 0,
+        'created' => 0,
+        'edit_node' => 0,
+        'delete_node' => 0,
+        'field_kt_teaser_img_fid' => 0,
+        'body' => 0,
+      ),
       'teasers_last' => 1,
       'timeout' => '5000',
       'delay' => '0',
@@ -575,7 +590,7 @@ function kt_stories_views_default_views() {
   ));
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
-  $handler = $view->new_display('page', 'Page panel fields', 'page_2');
+  $handler = $view->new_display('page', 'The News Page', 'page_2');
   $handler->override_option('fields', array(
     'teaser' => array(
       'label' => '',
@@ -766,24 +781,9 @@ function kt_stories_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('row_plugin', 'panels_fields');
-  $handler->override_option('row_options', array(
-    'inline' => array(),
-    'separator' => '',
-    'hide_empty' => 0,
-    'layout' => 'flexible:3_2_1_4_brochure_basic',
-    'change' => 'Change',
-    'regions' => array(
-      'teaser' => 'center',
-      'field_kt_stories_files_fid' => 'logo',
-      'field_kt_stories_img_gal_fid' => 'logo',
-      'field_kt_stories_subtitle_value' => 'header',
-      'title' => 'header',
-    ),
-  ));
   $handler->override_option('path', 'stories');
   $handler->override_option('menu', array(
-    'type' => 'normal',
+    'type' => 'none',
     'title' => 'News',
     'description' => 'Al the stories posted in this website',
     'weight' => '0',
