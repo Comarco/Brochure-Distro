@@ -45,22 +45,10 @@ function kt_simple_gallery_imagecache_default_presets() {
         '0' => array(
           'weight' => '0',
           'module' => 'imagecache',
-          'action' => 'imagecache_scale',
+          'action' => 'imagecache_scale_and_crop',
           'data' => array(
-            'width' => '800',
-            'height' => '',
-            'upscale' => 1,
-          ),
-        ),
-        '1' => array(
-          'weight' => '0',
-          'module' => 'imagecache',
-          'action' => 'imagecache_crop',
-          'data' => array(
-            'width' => '600',
-            'height' => '300',
-            'xoffset' => 'center',
-            'yoffset' => 'center',
+            'width' => '675',
+            'height' => '490',
           ),
         ),
       ),
@@ -92,26 +80,14 @@ function kt_simple_gallery_imagecache_default_presets() {
         '0' => array(
           'weight' => '-10',
           'module' => 'imagecache',
-          'action' => 'imagecache_scale',
+          'action' => 'imagecache_scale_and_crop',
           'data' => array(
-            'width' => '230',
-            'height' => '',
-            'upscale' => 1,
+            'width' => '330',
+            'height' => '200',
           ),
         ),
         '1' => array(
-          'weight' => '-9',
-          'module' => 'imagecache',
-          'action' => 'imagecache_crop',
-          'data' => array(
-            'width' => '220',
-            'height' => '160',
-            'xoffset' => 'center',
-            'yoffset' => 'center',
-          ),
-        ),
-        '2' => array(
-          'weight' => '-8',
+          'weight' => '-7',
           'module' => 'imagecache_autorotate',
           'action' => 'imagecache_autorotate',
           'data' => array(),

@@ -133,6 +133,26 @@ function kt_brochure_layouts_boxes_imagecache_default_presets() {
 }
 
 /**
+ * Implementation of hook_node_info().
+ */
+function kt_brochure_layouts_boxes_node_info() {
+  $items = array(
+    'kt_video_gal' => array(
+      'name' => t('A content type to show videos'),
+      'module' => 'features',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'has_body' => '1',
+      'body_label' => t('Body'),
+      'min_word_count' => '0',
+      'help' => '',
+    ),
+  );
+  return $items;
+}
+
+/**
  * Implementation of hook_views_api().
  */
 function kt_brochure_layouts_boxes_views_api() {

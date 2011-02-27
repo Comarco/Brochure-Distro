@@ -104,6 +104,76 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_kt_video_gal';
+  $strongarm->value = 0;
+
+  $export['comment_anonymous_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_controls_kt_video_gal';
+  $strongarm->value = '3';
+
+  $export['comment_controls_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_kt_video_gal';
+  $strongarm->value = '4';
+
+  $export['comment_default_mode_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_order_kt_video_gal';
+  $strongarm->value = '1';
+
+  $export['comment_default_order_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_kt_video_gal';
+  $strongarm->value = '50';
+
+  $export['comment_default_per_page_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_kt_video_gal';
+  $strongarm->value = '0';
+
+  $export['comment_form_location_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_kt_video_gal';
+  $strongarm->value = '2';
+
+  $export['comment_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_kt_video_gal';
+  $strongarm->value = '1';
+
+  $export['comment_preview_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_kt_video_gal';
+  $strongarm->value = '1';
+
+  $export['comment_subject_field_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_kt_video_gal';
+  $strongarm->value = '0';
+
+  $export['language_content_type_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'lightbox2_border_size';
   $strongarm->value = '10';
 
@@ -388,6 +458,15 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm->value = 'View image';
 
   $export['lightbox2_view_image_text'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_kt_video_gal';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+
+  $export['node_options_kt_video_gal'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -1063,7 +1142,6 @@ batch*';
     'toggle_comment_user_picture' => 0,
     'toggle_primary_links' => 0,
     'toggle_secondary_links' => 0,
-    'toggle_node_info_kt_bookmark' => 1,
     'logo_upload' => '',
     'favicon_upload' => '',
     'equalize_leaderboard' => 0,
@@ -1211,5 +1289,12 @@ settings[color_enable_schemes]="off"
   );
 
   $export['theme_settings'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'upload_kt_video_gal';
+  $strongarm->value = '1';
+
+  $export['upload_kt_video_gal'] = $strongarm;
   return $export;
 }

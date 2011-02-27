@@ -186,6 +186,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
         'contains' => 'region',
         'children' => array(
           0 => 'main_left',
+          1 => 'top_right',
         ),
         'parent' => 'main',
         'class' => '',
@@ -193,10 +194,10 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       'main_left' => array(
         'type' => 'region',
         'title' => 'Top',
-        'width' => 100,
+        'width' => '67.70230802505165',
         'width_type' => '%',
         'parent' => '1',
-        'class' => '',
+        'class' => 'top',
       ),
       2 => array(
         'type' => 'row',
@@ -272,7 +273,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       'header' => array(
         'type' => 'region',
         'title' => 'Header',
-        'width' => '65.50866069753184',
+        'width' => '66.96925994282807',
         'width_type' => '%',
         'parent' => '4',
         'class' => 'header',
@@ -280,7 +281,7 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
       'logo' => array(
         'type' => 'region',
         'title' => 'logo',
-        'width' => '34.491339302468155',
+        'width' => '33.030740057171926',
         'width_type' => '%',
         'parent' => '4',
         'class' => '',
@@ -301,6 +302,14 @@ function kt_brochure_layouts_boxes_default_panels_layout() {
         'width_type' => '%',
         'parent' => '5',
         'class' => '',
+      ),
+      'top_right' => array(
+        'type' => 'region',
+        'title' => 'Top Right',
+        'width' => '32.29769197494836',
+        'width_type' => '%',
+        'parent' => '1',
+        'class' => 'top-right',
       ),
     ),
   );
