@@ -313,6 +313,7 @@ function kt_bookmarks_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
+  $handler->override_option('title', 'Last Bookmarks');
   $handler->override_option('items_per_page', 40);
   $handler->override_option('use_more', 0);
   $handler->override_option('use_more_always', 0);

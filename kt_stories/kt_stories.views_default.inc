@@ -496,7 +496,6 @@ function kt_stories_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('title', 'The last 10 stories');
   $handler->override_option('use_more', 1);
   $handler->override_option('use_more_text', 'See all the stories');
   $handler->override_option('style_plugin', 'slideshow');

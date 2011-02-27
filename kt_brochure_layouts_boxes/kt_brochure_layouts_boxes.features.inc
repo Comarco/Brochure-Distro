@@ -17,6 +17,9 @@ function kt_brochure_layouts_boxes_ctools_plugin_api() {
   elseif ($module == "strongarm" && $api == "strongarm") {
     return array("version" => 1);
   }
+  elseif ($module == "stylizer" && $api == "stylizer") {
+    return array("version" => 1);
+  }
 }
 
 /**
