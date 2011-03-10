@@ -16,10 +16,8 @@ function kt_links_taxonomy_default_vocabularies() {
       'tags' => '1',
       'module' => 'features_kt_link_tags',
       'weight' => '-2',
-      'language' => '',
-      'nodes' => array(
-        'kt_link' => 'kt_link',
-      ),
+      'type' => NULL,
+      'nodes' => array(),
     ),
   );
 }

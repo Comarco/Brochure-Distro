@@ -1,4 +1,5 @@
 core = "6.x"
+dependencies[] = "content"
 dependencies[] = "features"
 dependencies[] = "image_fupload_imagefield"
 dependencies[] = "imagefield"

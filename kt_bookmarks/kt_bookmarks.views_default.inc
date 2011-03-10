@@ -314,6 +314,8 @@ function kt_bookmarks_views_default_views() {
     'type' => 'none',
   ));
   $handler->override_option('title', 'Last Bookmarks');
+  $handler->override_option('empty', 'You should <a href="/node/add/kt-bookmark">add some bookmarks</a> in the system in order to see something here');
+  $handler->override_option('empty_format', '1');
   $handler->override_option('items_per_page', 40);
   $handler->override_option('use_more', 0);
   $handler->override_option('use_more_always', 0);
@@ -340,11 +342,11 @@ function kt_bookmarks_views_default_views() {
   ));
   $handler->override_option('path', 'bookmarks');
   $handler->override_option('menu', array(
-    'type' => 'normal',
-    'title' => 'Bookmarks',
-    'description' => 'Bookmarks',
-    'weight' => '0',
-    'name' => 'primary-links',
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => '',
+    'name' => 'navigation',
   ));
   $handler->override_option('tab_options', array(
     'type' => 'none',

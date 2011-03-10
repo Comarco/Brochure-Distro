@@ -104,6 +104,13 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'clean_url';
+  $strongarm->value = TRUE;
+
+  $export['clean_url'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_kt_video_gal';
   $strongarm->value = 0;
 

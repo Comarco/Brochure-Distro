@@ -289,7 +289,7 @@ function kt_links_views_default_views() {
     'type' => 'none',
   ));
   $handler->override_option('title', 'Interresting links');
-  $handler->override_option('empty', 'You should add some links in the system in order to see something here');
+  $handler->override_option('empty', 'You should <a href="/node/add/kt-link">add some links</a> in the system in order to see something here');
   $handler->override_option('empty_format', '1');
   $handler->override_option('items_per_page', 40);
   $handler->override_option('use_pager', '1');
