@@ -118,10 +118,24 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_story';
+  $strongarm->value = 0;
+
+  $export['comment_anonymous_story'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_controls_kt_video_gal';
   $strongarm->value = '3';
 
   $export['comment_controls_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_controls_story';
+  $strongarm->value = '3';
+
+  $export['comment_controls_story'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -132,10 +146,24 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_story';
+  $strongarm->value = '4';
+
+  $export['comment_default_mode_story'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_order_kt_video_gal';
   $strongarm->value = '1';
 
   $export['comment_default_order_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_order_story';
+  $strongarm->value = '1';
+
+  $export['comment_default_order_story'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -146,10 +174,24 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_story';
+  $strongarm->value = '50';
+
+  $export['comment_default_per_page_story'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_kt_video_gal';
   $strongarm->value = '0';
 
   $export['comment_form_location_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_story';
+  $strongarm->value = '0';
+
+  $export['comment_form_location_story'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -167,6 +209,20 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_story';
+  $strongarm->value = '1';
+
+  $export['comment_preview_story'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_story';
+  $strongarm->value = '2';
+
+  $export['comment_story'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_kt_video_gal';
   $strongarm->value = '1';
 
@@ -174,10 +230,24 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_story';
+  $strongarm->value = '1';
+
+  $export['comment_subject_field_story'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_kt_video_gal';
   $strongarm->value = '0';
 
   $export['language_content_type_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_story';
+  $strongarm->value = '0';
+
+  $export['language_content_type_story'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -500,6 +570,16 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_story';
+  $strongarm->value = array(
+    0 => 'status',
+    1 => 'promote',
+  );
+
+  $export['node_options_story'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'page_manager_contact_site_disabled';
   $strongarm->value = FALSE;
 
@@ -514,6 +594,13 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'page_manager_user_view_disabled';
+  $strongarm->value = FALSE;
+
+  $export['page_manager_user_view_disabled'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'panels_legacy_rendering_mode';
   $strongarm->value = FALSE;
 
@@ -521,27 +608,10 @@ function kt_brochure_layouts_boxes_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'site_footer';
-  $strongarm->value = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <img src="/sites/all/themes/brochure_basic/logo.png" width="137" height="64" alt="brochure_basic_logo.png" /> sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt <a href="contact">mollit anim id est laborum</a>. ';
-
-  $export['site_footer'] = $strongarm;
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'site_frontpage';
   $strongarm->value = 'front';
 
   $export['site_frontpage'] = $strongarm;
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'site_mission';
-  $strongarm->value = '<h3>Our Mission</h3>
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
-
-Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. ';
-
-  $export['site_mission'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -1638,5 +1708,26 @@ settings[color_enable_schemes]="off"
   $strongarm->value = '1';
 
   $export['upload_kt_video_gal'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'upload_story';
+  $strongarm->value = '1';
+
+  $export['upload_story'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'user_admin_role';
+  $strongarm->value = '3';
+
+  $export['user_admin_role'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'user_mail_status_activated_notify';
+  $strongarm->value = TRUE;
+
+  $export['user_mail_status_activated_notify'] = $strongarm;
   return $export;
 }

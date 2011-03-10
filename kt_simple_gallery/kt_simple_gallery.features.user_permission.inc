@@ -35,6 +35,7 @@ function kt_simple_gallery_user_default_permissions() {
     'name' => 'download original image',
     'roles' => array(
       '0' => 'administrator',
+      '1' => 'editor',
     ),
   );
 
@@ -51,6 +52,7 @@ function kt_simple_gallery_user_default_permissions() {
     'name' => 'edit captions',
     'roles' => array(
       '0' => 'administrator',
+      '1' => 'editor',
     ),
   );
 
@@ -67,6 +69,7 @@ function kt_simple_gallery_user_default_permissions() {
     'name' => 'mass upload images',
     'roles' => array(
       '0' => 'administrator',
+      '1' => 'editor',
     ),
   );
 
@@ -75,6 +78,7 @@ function kt_simple_gallery_user_default_permissions() {
     'name' => 'view imagecache gal_simple_mini_thumb',
     'roles' => array(
       '0' => 'administrator',
+      '1' => 'editor',
     ),
   );
 
@@ -83,6 +87,7 @@ function kt_simple_gallery_user_default_permissions() {
     'name' => 'view imagecache gal_simple_normalsize',
     'roles' => array(
       '0' => 'administrator',
+      '1' => 'editor',
     ),
   );
 
@@ -91,6 +96,7 @@ function kt_simple_gallery_user_default_permissions() {
     'name' => 'view imagecache gal_simple_thumbblock',
     'roles' => array(
       '0' => 'administrator',
+      '1' => 'editor',
     ),
   );
 
@@ -99,6 +105,7 @@ function kt_simple_gallery_user_default_permissions() {
     'name' => 'view imagecache gal_simple_thumbnail',
     'roles' => array(
       '0' => 'administrator',
+      '1' => 'editor',
     ),
   );
 
