@@ -36,7 +36,7 @@ function kt_brochure_layouts_boxes_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-50',
+    'weight' => '0',
   );
   // Exported menu link: primary-links:images
   $menu_links['primary-links:images'] = array(
@@ -50,7 +50,7 @@ function kt_brochure_layouts_boxes_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-49',
+    'weight' => '0',
   );
   // Exported menu link: primary-links:news
   $menu_links['primary-links:news'] = array(
@@ -64,7 +64,7 @@ function kt_brochure_layouts_boxes_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-48',
+    'weight' => '0',
   );
   // Translatables
   // Included for use with string extractors like potx.
