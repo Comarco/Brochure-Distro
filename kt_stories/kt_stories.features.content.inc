@@ -221,6 +221,7 @@ function kt_stories_content_default_fields() {
     'field_name' => 'field_kt_stories_img_gal',
     'type_name' => 'story',
     'display_settings' => array(
+      'weight' => 0,
       'parent' => '',
       'label' => array(
         'format' => 'hidden',
@@ -230,7 +231,7 @@ function kt_stories_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'imagefield__lightbox2__gal_simple_mini_thumb__gal_simple_normalsize',
+        'format' => 'imagefield__lightbox2__kt_stories_thumbnail__kt_stories_nornalsize',
         'exclude' => 0,
       ),
       '4' => array(

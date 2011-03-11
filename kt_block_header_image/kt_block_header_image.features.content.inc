@@ -93,13 +93,13 @@ function kt_block_header_image_content_default_fields() {
     'field_name' => 'field_kt_teaser_img',
     'type_name' => 'story',
     'display_settings' => array(
-      'weight' => '-27',
+      'weight' => '-4',
       'parent' => '',
       'label' => array(
         'format' => 'hidden',
       ),
       'teaser' => array(
-        'format' => 'gal_simple_thumbnail_linked',
+        'format' => 'kt_stories_thumbnail_linked',
         'exclude' => 0,
       ),
       'full' => array(

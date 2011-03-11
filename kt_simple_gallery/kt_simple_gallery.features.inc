@@ -51,6 +51,12 @@ function kt_simple_gallery_imagecache_default_presets() {
             'height' => '490',
           ),
         ),
+        '1' => array(
+          'weight' => '0',
+          'module' => 'imagecache_autorotate',
+          'action' => 'imagecache_autorotate',
+          'data' => array(),
+        ),
       ),
     ),
     'gal_simple_thumbblock' => array(
