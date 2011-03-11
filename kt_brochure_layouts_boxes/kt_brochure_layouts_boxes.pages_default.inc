@@ -703,7 +703,7 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
   $pages['frontpage'] = $page;
 
   $page = new stdClass;
-  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->disabled = TRUE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
   $page->name = 'kt_brochure_bookmarks';
   $page->task = 'page';
@@ -730,7 +730,7 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
   $page->conf = array();
   $page->default_handlers = array();
   $handler = new stdClass;
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->disabled = TRUE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
   $handler->name = 'page_kt_brochure_bookmarks_panel_context';
   $handler->task = 'page';
@@ -845,7 +845,7 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
   $pages['kt_brochure_bookmarks'] = $page;
 
   $page = new stdClass;
-  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->disabled = TRUE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
   $page->name = 'kt_brochure_links';
   $page->task = 'page';
@@ -872,7 +872,7 @@ function kt_brochure_layouts_boxes_default_page_manager_pages() {
   $page->conf = array();
   $page->default_handlers = array();
   $handler = new stdClass;
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->disabled = TRUE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
   $handler->name = 'page_kt_brochure_links_panel_context';
   $handler->task = 'page';
